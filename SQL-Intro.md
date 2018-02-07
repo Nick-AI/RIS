@@ -35,7 +35,7 @@ String sql = "CREATE TABLE IF NOT EXISTS login (\n"
 
 stmt.executeUpdate(sql)
 
--execute Query (When you want to create a query on a table
+- execute Query (When you want to create a query on a table
 
 stmt.executeQuery("Select * from patientTable where lName='Smith');
 
