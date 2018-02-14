@@ -25,4 +25,10 @@ create table if not exists login(
  imageDate date,
  image varBinary(Max));
  
+ create table if not exists billing(
+  ID int PRIMARY KEY,
+  totalAmount long,
+  dueDate date);
+  
+ 
  
