@@ -27,10 +27,10 @@ public class openSQL
 	{
 		stmt=con.createStatement();
 		String sql = "CREATE TABLE IF NOT EXISTS login (\n"
-                + "	username varchar(500) PRIMARY KEY,\n"
-                + "	name text NOT NULL,\n"
-                + "	level int,\n"
-                + " password varChar(500)\n"
+                + "username varchar(500) PRIMARY KEY,\n"
+                + "name text NOT NULL,\n"
+                + "level int,\n"
+                + "password varChar(500)\n"
                 + ");";
 		stmt.executeUpdate(sql);
 		sql="CREATE TABLE IF NOT EXISTS patientInfo (\n"
