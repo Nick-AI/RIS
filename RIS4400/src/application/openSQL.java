@@ -1,21 +1,29 @@
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.mysql.jdbc.Connection;
+
 /*This method creates the SQL Handshake that needs to be conducted before executing queries
  * 
  * */
 
 public class openSQL 
 {
-	public java.sql.Connection con;
-	public java.sql.Statement stmt;
+	public static java.sql.Connection con;
+	public static java.sql.Statement stmt;
 
-	public java.sql.Connection createConnection()
+	public static void main(String[] args) throws SQLException
+	{
+		java.sql.Connection con=createConnection();
+		createTables(con);
+	}
+	public static java.sql.Connection createConnection()
 	{
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");  
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/RISystem","root","changeme");  
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/RISystem","root","CHANGEME");  
+			//CHANGME Variable changes depending on your assigned password for MySQLWorkBench
 		}
 		catch (Exception e) 
 		{
@@ -23,14 +31,14 @@ public class openSQL
 		}
 		return con;
 	}
-	public void createTables(java.sql.Connection con) throws SQLException
+	public static void createTables(java.sql.Connection con) throws SQLException
 	{
 		stmt=con.createStatement();
 		String sql = "CREATE TABLE IF NOT EXISTS login (\n"
-                + "username varchar(500) PRIMARY KEY,\n"
-                + "name text NOT NULL,\n"
-                + "level int,\n"
-                + "password varChar(500)\n"
+                + "	username varchar(500) PRIMARY KEY,\n"
+                + "	name text NOT NULL,\n"
+                + "	level int,\n"
+                + " password varChar(500)\n"
                 + ");";
 		stmt.executeUpdate(sql);
 		sql="CREATE TABLE IF NOT EXISTS patientInfo (\n"
@@ -42,9 +50,9 @@ public class openSQL
 				+ ");";
 		stmt.executeUpdate(sql);
 		sql="CREATE TABLE IF NOT EXISTS PACS (\n"
-				+" ID int,\n"
+				+"ID int,\n"
 				+ "imageDate date,\n"
-				+ "image varBinary(max)\n"
+				+ "image varBinary(2000)\n"
 				+ ");";
 		stmt.executeUpdate(sql);
 		sql="CREATE TABLE IF NOT EXISTS billing (\n"
