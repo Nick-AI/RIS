@@ -9,8 +9,9 @@
 
 create table if not exists login(
  username varchar(10),
- password varchar(10),
- level boolean);
+ name text NOT NULL,
+ level int,
+ password varchar(10));
  
 # level defines access
 
