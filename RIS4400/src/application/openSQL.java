@@ -33,6 +33,8 @@ public class openSQL
 	}
 	public static void createTables(java.sql.Connection con) throws SQLException
 	{
+		//These tables can be changed when needed as long as the proper format is added//
+		
 		stmt=con.createStatement();
 		String sql = "CREATE TABLE IF NOT EXISTS login (\n"
                 + "	username varchar(500) PRIMARY KEY,\n"
