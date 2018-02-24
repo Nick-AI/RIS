@@ -32,10 +32,7 @@ create table if not exists login(
  
  create table if not exists billing(
   ID int PRIMARY KEY,
-  totalAmount long,
-  dueDate date,
-  insurance varchar(20),
-  insureID int);
+  totalAmount long);
   
  
  
