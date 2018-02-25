@@ -16,16 +16,40 @@ public class MainMenuController
 	Scene scene;
 	Parent root;
 	
+	
 	@FXML Button ButtonRegistration;
 	@FXML Button ButtonVitals;
 	@FXML Button ButtonImaging;
 	@FXML Button ButtonFiles;
 	@FXML Button ButtonLogOut;
+	@FXML Button ButtonBilling;
+	
 
 	//used to connect the main class with the controller
 	public void setMain(Main M)
 	{
 		main=M;
+	}
+	
+	public void setUp()
+	{
+		int Level = LogInController.getLevel();
+		// if not admin or billing can not see billing
+		if (Level > 1 && Level != 5)
+		{
+			ButtonBilling.setVisible(false);
+		}
+		//if not admin or doctor can not see file review
+		if (Level > 2)
+		{
+			ButtonFiles.setVisible(false);
+		}
+		//if not admin, doc, or nurse can not see imaging or vitals
+		if (Level > 3)
+		{
+			ButtonImaging.setVisible(false);
+			ButtonVitals.setVisible(false);
+		}
 	}
 	
 	public void registration(ActionEvent event) throws Exception
@@ -76,5 +100,15 @@ public class MainMenuController
 		root = FXMLLoader.load(getClass().getResource("/EntranceView/LogIn.fxml"));
 		scene = new Scene(root);
 		stage.setScene(scene);
+	}
+	
+	public void billing(ActionEvent event) throws Exception
+	{
+		System.out.println("billing");
+		/*stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+		root = FXMLLoader.load(getClass().getResource("/EntranceView/Registration.fxml"));
+		scene = new Scene(root);
+		stage.setScene(scene);*/
 	}
 }
