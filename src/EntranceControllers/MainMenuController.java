@@ -105,6 +105,7 @@ public class MainMenuController
 	public void billing(ActionEvent event) throws Exception
 	{
 		System.out.println("billing");
+		Billing.billing.billingStart();
 		/*stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
 		root = FXMLLoader.load(getClass().getResource("/EntranceView/Registration.fxml"));

@@ -54,20 +54,26 @@ public class billing extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args)
+	public static void billingStart()
+	//public static void main(String[] args)
 	//THIS WILL NEED TO BE CHANGED TO PARAMETERS (Physician,con)
 	{
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+		EventQueue.invokeLater(new Runnable() 
+		{
+			public void run() 
+			{
 				//con2=con;
-				try {
+				try 
+				{
 					Class.forName("com.mysql.jdbc.Driver");  
 					con=(Connection) DriverManager.getConnection(  
 					"jdbc:mysql://localhost:3306/RISystem","root","usafcdr86652");  
 					stmt=(Statement) con.createStatement();  
 					billing frame = new billing();
 					frame.setVisible(true);
-				} catch (Exception e) {
+				} 
+				catch (Exception e) 
+				{
 					System.out.println("Credentials for SQL Server need to be changed for your system.");
 					e.printStackTrace();
 				}
