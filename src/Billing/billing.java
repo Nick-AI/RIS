@@ -26,6 +26,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
 import EntranceControllers.LogInController;
+import application.openSQL;
 
 import java.awt.Color;
 import javax.swing.JRadioButton;
@@ -58,7 +59,7 @@ public class billing extends JFrame {
 	//public static void main(String[] args)
 	//THIS WILL NEED TO BE CHANGED TO PARAMETERS (Physician,con)
 	{
-		EventQueue.invokeLater(new Runnable() 
+		/*EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() 
 			{
@@ -78,7 +79,38 @@ public class billing extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
+		
+		//created admin account if it does not already exist
+		try 
+		{
+			String q1 = "select * from patientinfo WHERE fname = 'john' AND lname = 'doe';";
+			ResultSet rs= openSQL.stmt.executeQuery(q1);
+			
+			if (rs.next())
+			{
+				System.out.println("User id is already registered");
+			}
+			else
+			{
+				// Inserting data in database
+	            String q2 = "insert into patientinfo values('" +"john"+ "', '" +"doe"+ 
+	                                  "', " +0000+ ", 01/01/2000, '"+"M"+"');";
+	            int x = openSQL.stmt.executeUpdate(q2);
+	            if (x > 0)            
+	                System.out.println("Successfully Inserted");            
+	            else           
+	                System.out.println("Insert Failed");
+			}
+		} 
+		
+		catch (SQLException e1) 
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		billing frame = new billing();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -332,7 +364,7 @@ public class billing extends JFrame {
 				ResultSet cur;
 				try {
 					String sql=("select * from patientInfo where ID="+ID+" && DOB="+DOB);
-					cur = stmt.executeQuery(sql);
+					cur = openSQL.stmt.executeQuery(sql);
 					while(cur.next())
 					{
 					panel.setVisible(true);
