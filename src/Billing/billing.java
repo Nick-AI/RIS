@@ -1,5 +1,3 @@
-package Billing;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -25,9 +23,6 @@ import javax.swing.border.LineBorder;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
-import EntranceControllers.LogInController;
-import application.openSQL;
-
 import java.awt.Color;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
@@ -37,12 +32,14 @@ import javax.swing.Box;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.JProgressBar;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 public class billing extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtID;
-	private JTextField tctDOB;
+	private JTextField txtDOB;
 	private JTextField txtDate;
 	private JTextField txtName;
 	private JTextField txtTotal;
@@ -50,73 +47,34 @@ public class billing extends JFrame {
 	private JTextField txtOther;
 	private static Statement stmt;
 	private static Connection con;
-	private String physician=LogInController.getName();
-	private double total=0;
+	private String physician="Dr. Bryce Pain";
+	private double total=0.0;
+	private int counter=0;
 	/**
 	 * Launch the application.
 	 */
-	public static void billingStart()
-	//public static void main(String[] args)
-	//THIS WILL NEED TO BE CHANGED TO PARAMETERS (Physician,con)
-	{
-		/*EventQueue.invokeLater(new Runnable() 
-		{
-			public void run() 
-			{
-				//con2=con;
-				try 
-				{
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
 					Class.forName("com.mysql.jdbc.Driver");  
 					con=(Connection) DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/RISystem","root","usafcdr86652");  
+					"jdbc:mysql://localhost:3306/rsvpsystem","root","ResidenceLife1873!");  
 					stmt=(Statement) con.createStatement();  
 					billing frame = new billing();
 					frame.setVisible(true);
-				} 
-				catch (Exception e) 
-				{
-					System.out.println("Credentials for SQL Server need to be changed for your system.");
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-		});*/
-		
-		//created admin account if it does not already exist
-		try 
-		{
-			String q1 = "select * from patientinfo WHERE fname = 'john' AND lname = 'doe';";
-			ResultSet rs= openSQL.stmt.executeQuery(q1);
-			
-			if (rs.next())
-			{
-				System.out.println("User id is already registered");
-			}
-			else
-			{
-				// Inserting data in database
-	            String q2 = "insert into patientinfo values('" +"john"+ "', '" +"doe"+ 
-	                                  "', " +0000+ ", 01/01/2000, '"+"M"+"');";
-	            int x = openSQL.stmt.executeUpdate(q2);
-	            if (x > 0)            
-	                System.out.println("Successfully Inserted");            
-	            else           
-	                System.out.println("Insert Failed");
-			}
-		} 
-		
-		catch (SQLException e1) 
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		billing frame = new billing();
-		frame.setVisible(true);
+		});
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public billing() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		setTitle("Billing");
@@ -133,9 +91,9 @@ public class billing extends JFrame {
 		lblBillingRequestFor.setBounds(426, 11, 293, 20);
 		contentPane.add(lblBillingRequestFor);
 		
-		JLabel lblPatientIdNumber = new JLabel("Patient ID Number");
-		lblPatientIdNumber.setBounds(10, 92, 103, 14);
-		contentPane.add(lblPatientIdNumber);
+		JLabel lblIDNum = new JLabel("Patient ID Number");
+		lblIDNum.setBounds(10, 92, 103, 14);
+		contentPane.add(lblIDNum);
 		
 		txtID = new JTextField();
 		txtID.setBounds(118, 89, 122, 20);
@@ -146,14 +104,14 @@ public class billing extends JFrame {
 		lblDob.setBounds(10, 124, 46, 14);
 		contentPane.add(lblDob);
 		
-		tctDOB = new JTextField();
-		tctDOB.setBounds(51, 121, 95, 20);
-		contentPane.add(tctDOB);
-		tctDOB.setColumns(10);
+		txtDOB = new JTextField();
+		txtDOB.setBounds(51, 121, 95, 20);
+		contentPane.add(txtDOB);
+		txtDOB.setColumns(10);
 		
-		JLabel lblTodaysDate = new JLabel("Today's Date:");
-		lblTodaysDate.setBounds(10, 52, 78, 14);
-		contentPane.add(lblTodaysDate);
+		JLabel lblDate = new JLabel("Today's Date:");
+		lblDate.setBounds(10, 52, 78, 14);
+		contentPane.add(lblDate);
 		String date=getTime();
 		txtDate = new JTextField("  "+ date);
 		txtDate.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -172,10 +130,10 @@ public class billing extends JFrame {
 		txtpnfillFormOut.setBounds(436, 36, 268, 70);
 		contentPane.add(txtpnfillFormOut);
 		
-		JButton btnNext = new JButton("Next");
+		JButton btnNext1 = new JButton("Next");
 		
-		btnNext.setBounds(272, 88, 89, 23);
-		contentPane.add(btnNext);
+		btnNext1.setBounds(272, 88, 89, 23);
+		contentPane.add(btnNext1);
 		
 		JPanel panel = new JPanel();
 		panel.setVisible(false);
@@ -248,6 +206,7 @@ public class billing extends JFrame {
 		panel.add(rdH);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_1.setBounds(588, 146, 451, 146);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
@@ -263,59 +222,82 @@ public class billing extends JFrame {
 		textField_6.setColumns(10);
 		
 		JRadioButton rdbtnApprove = new JRadioButton("All payments are correct and accurate");
-		rdbtnApprove.setBounds(107, 61, 227, 23);
+		rdbtnApprove.setBounds(97, 61, 264, 23);
 		panel_1.add(rdbtnApprove);
-		
+		panel_1.setVisible(false);
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(173, 91, 89, 23);
 		panel_1.add(btnSubmit);
+		
+		JLabel agreelbl = new JLabel("AGREE");
+		agreelbl.setForeground(Color.RED);
+		agreelbl.setBounds(46, 65, 47, 14);
+		panel_1.add(agreelbl);
+		agreelbl.setVisible(false);
 		JRadioButton rdG = new JRadioButton("PET Scan");
 		rdG.setBounds(22, 213, 137, 20);
 		panel.add(rdG);
 		JButton btnNewButton = new JButton("Next");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				total=0;
+				counter=0;
 				if(rdA.isSelected())
 				{
 					total=total+500.00;
+					counter++;
 				}
 				if(rdB.isSelected())
 				{
 					total=total+2000.00;
+					counter++;
 				}
 				if(rdC.isSelected())
 				{
 					total=total+1200.00;
+					counter++;
 				}
 				if(rdD.isSelected())
 				{
 					total=total+263.00;
+					counter++;
 				}
 				if(rdF.isSelected())
 				{
 					total=total+102.00;
+					counter++;
 				}
 				if(rdG.isSelected())
 				{
 					total=total+5000.00;
+					counter++;
 				}
 				if(rdH.isSelected())
 				{
 					String totalAmount=txtOther.getText();
 					double amountTotal=Double.parseDouble(totalAmount);
 					total=total+amountTotal;
+					counter++;
 				}
 				//NumberFormat formatter = NumberFormat.getCurrencyInstance();
 				String amount=Double.toString(total);
 				//String amount2=formatter.format(amount);
-				txtTotal.setText(" $ "+amount);
 				
+				if(counter>0)
+				{
+			
+				txtTotal.setText(" $ "+amount);
+				panel_1.setVisible(true);
+				btnNewButton.setText("Update Values");
+				}
+				else
+				{}
 				
 				
 			}
 		});
-		btnNewButton.setBounds(269, 213, 89, 23);
+		btnNewButton.setBounds(254, 212, 125, 23);
 		panel.add(btnNewButton);
 		
 		
@@ -331,7 +313,15 @@ public class billing extends JFrame {
 				}
 				else
 				{
+					agreelbl.setVisible(true);
+					
+					
+					
+					
 				}
+				
+				
+				
 				
 			}
 		});
@@ -349,11 +339,12 @@ public class billing extends JFrame {
 		JLabel lblMmddyyyy = new JLabel("MM/DD/YYYY");
 		lblMmddyyyy.setBounds(156, 124, 122, 14);
 		contentPane.add(lblMmddyyyy);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtID, txtDOB, btnNext1, txtTotal, rdH, txtOther, btnNewButton, btnSubmit, btnExit}));
 		
-		btnNext.addActionListener(new ActionListener() {
+		btnNext1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String ID =txtID.getText();
-				String DOB=tctDOB.getText();
+				String DOB=txtDOB.getText();
 				if(ID.equals("")||DOB.equals("")||DOB.equals("MM/DD/YYYY"))
 				{
 					
@@ -364,16 +355,18 @@ public class billing extends JFrame {
 				ResultSet cur;
 				try {
 					String sql=("select * from patientInfo where ID="+ID+" && DOB="+DOB);
-					cur = openSQL.stmt.executeQuery(sql);
+					cur = stmt.executeQuery(sql);
+					//openSQL
 					while(cur.next())
 					{
 					panel.setVisible(true);
-					btnNext.setVisible(false);
+					btnNext1.setVisible(false);
 					String fname=cur.getString("fname");
 					String lname=cur.getString("lname");
 					String fullname=fname+" "+lname;
 					txtName.setText(fullname);
-					
+					txtID.setEditable(false);
+					txtDOB.setEditable(false);
 					
 				}} catch (SQLException e1) {
 					// TODO Auto-generated catch block
