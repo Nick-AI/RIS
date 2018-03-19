@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="720.0" maxWidth="720.0" minHeight="720.0" minWidth="720.0" prefHeight="720.0" prefWidth="720.0" style="-fx-background-color: BEF2B2;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EntranceControllers.MainMenuController">
+<AnchorPane fx:id="mainMenu" maxHeight="720.0" maxWidth="720.0" minHeight="720.0" minWidth="720.0" onMouseEntered="#setUp" prefHeight="720.0" prefWidth="720.0" style="-fx-background-color: BEF2B2;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EntranceControllers.MainMenuController">
    <children>
       <GridPane maxHeight="720.0" maxWidth="720.0" minHeight="720.0" minWidth="720.0" prefHeight="720.0" prefWidth="720.0">
         <columnConstraints>
@@ -54,6 +54,12 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Button fx:id="ButtonLogOut" layoutX="180.0" layoutY="107.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Button fx:id="ButtonBilling" layoutX="178.0" layoutY="103.0" mnemonicParsing="false" onAction="#billing" text="Billing" />
+                  <Button fx:id="ButtonReferring" alignment="CENTER" layoutX="168.0" layoutY="201.0" mnemonicParsing="false" onAction="#referring" text="Referring " textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </children>

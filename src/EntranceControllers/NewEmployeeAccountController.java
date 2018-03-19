@@ -45,7 +45,8 @@ public class NewEmployeeAccountController
 	
 	public void populate()
 	{
-		levelChoiceBox.setItems(FXCollections.observableArrayList("Admin","Doctor","Nurse","Clerk","Billing"));
+		levelChoiceBox.setItems(FXCollections.observableArrayList("Admin","Doctor","Nurse",
+				"Clerk","Referring","Tech"));
 	}
 	
 	public void back(ActionEvent event) throws Exception
@@ -90,9 +91,13 @@ public class NewEmployeeAccountController
 		{
 			Level = 4;
 		}
-		else if(Objects.equals((String) levelChoiceBox.getValue(), "Billing"))
+		else if(Objects.equals((String) levelChoiceBox.getValue(), "Referring"))
 		{
 			Level = 5;
+		}
+		else if(Objects.equals((String) levelChoiceBox.getValue(), "Tech"))
+		{
+			Level = 6;
 		}
 		
 		//checks to see if adminUser exist

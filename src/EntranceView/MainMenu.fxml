@@ -59,6 +59,7 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Button fx:id="ButtonBilling" layoutX="178.0" layoutY="103.0" mnemonicParsing="false" onAction="#billing" text="Billing" />
+                  <Button fx:id="ButtonReferring" alignment="CENTER" layoutX="168.0" layoutY="201.0" mnemonicParsing="false" onAction="#referring" text="Referring " textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </children>
