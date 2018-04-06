@@ -26,6 +26,7 @@ public class LogInController
 	
 	static String UserName, Password, Name;
 	static int Level;
+	static int staffID;
 	
 	@FXML Button ButtonLogIn;
 	@FXML TextField userNameField;
@@ -70,7 +71,8 @@ public class LogInController
 			if (rs.next())
 			{
 				Level = rs.getInt(3);
-				Name = rs.getString(2);
+				Name = rs.getString(1);
+				staffID = rs.getInt(4);
 				stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 				root = FXMLLoader.load(getClass().getResource("/EntranceView/MainMenu.fxml"));
 				scene = new Scene(root);
@@ -154,6 +156,16 @@ public class LogInController
 	public static void setLevel(int level) 
 	{
 		Level = level;
+	}
+	
+	public static int getStaffID() 
+	{
+		return staffID;
+	}
+
+	public static void setStaffID(int StaffID) 
+	{
+		staffID = StaffID;
 	}
 	
 	

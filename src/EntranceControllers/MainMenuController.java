@@ -183,6 +183,7 @@ public class MainMenuController
 	public void referring(ActionEvent event) throws Exception
 	{
 		System.out.println("referring");
+		referring.referringPhysician.referringStart();
 		/*stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
 		root = FXMLLoader.load(getClass().getResource("/EntranceView/Files.fxml"));

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 /*This method creates the SQL Handshake that needs to be conducted before executing queries
  * 
  * */
-
+//jdbc:mysql://127.0.0.1:3306/?user=root
 public class openSQL 
 {
 	public static java.sql.Connection con;
@@ -24,8 +24,9 @@ public class openSQL
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");  
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/RISystem","root","usafcdr86652");  
+			con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/rissystem","root","usafcdr86652");  
 			//CHANGME Variable changes depending on your assigned password for MySQLWorkBench
+			//System.out.println("test");
 		}
 		catch (Exception e) 
 		{
@@ -35,7 +36,7 @@ public class openSQL
 	}
 	public static void createTables(java.sql.Connection con) throws SQLException
 	{
-		stmt=con.createStatement();
+	stmt=con.createStatement();
 		String sql = "CREATE TABLE IF NOT EXISTS login (\n"
                 + "	username varchar(500) PRIMARY KEY,\n"
                 + "	name text NOT NULL,\n"
@@ -43,7 +44,7 @@ public class openSQL
                 + " password varChar(500)\n"
                 + ");";
 		stmt.executeUpdate(sql);
-		sql="CREATE TABLE IF NOT EXISTS patientInfo (\n"
+		/*sql="CREATE TABLE IF NOT EXISTS patientInfo (\n"
 				+" fname varchar(200),\n"
 				+ "lname varchar(200),\n"
 				+ "ID int,\n"
@@ -64,6 +65,6 @@ public class openSQL
 				+ "insurance varChar(30),\n"
 				+ "insureID int\n"
 				+ ");";
-		stmt.executeUpdate(sql);
+		stmt.executeUpdate(sql);*/
 	}
 }
