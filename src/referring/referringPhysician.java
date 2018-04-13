@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.sql.Blob;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,6 +19,7 @@ import java.awt.Desktop;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JEditorPane;
 import javax.swing.border.LineBorder;
@@ -24,11 +27,25 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.util.IOUtils;
+import org.apache.poi.util.Units;
+import org.apache.poi.xwpf.usermodel.Document;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 public class referringPhysician {
@@ -240,6 +257,12 @@ public class referringPhysician {
 				catch (ArrayIndexOutOfBoundsException e)
 				{
 					lblError1.setVisible(true);
+				} catch (InvalidFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		});
@@ -701,153 +724,184 @@ public class referringPhysician {
 		
 		
 	}
-	public void writeFile(String a, String b, String c)
+	@SuppressWarnings({ "resource", "unused" })
+	public void writeFile(String a, String b, String c) throws IOException, InvalidFormatException
 	{
-		String FILENAME = System.getProperty("user.home") + "/Desktop/Report"+getTimeFile()+".doc";
+		String FILENAME = System.getProperty("user.home") + "/Desktop/Report"+getTimeFile()+".docx";
 		BufferedWriter bw = null;
 		FileWriter fw = null;
+		String body=null;
+		String fileID = null;
+		String imageID=null;
+	
+		String dateTaken=null;
+		String mode=null;
+		String desc=null;
+		int patID = 0;
+		String fname=null;
+		String lname=null;
+		String dob=null;
+		String gen=null;
+		String phone=null;
+		String addressOne=null;
+		String addressTwo=null;
+		String addressCity=null;
+		String addressState=null;
+		String addressZip=null;
+		String direct=null;
+		try {
 
-				try {
+		
+			File file = new File(FILENAME);
 
-					String data = "PATIENT REPORT \nDOWNLOADED: "+getTime()+"\n\n";
-					File file = new File(FILENAME);
-
-					// if file doesnt exists, then create it
-					if (!file.exists()) {
-						file.createNewFile();
-					}
-					String reportID = a;
-					fw = new FileWriter(file.getAbsoluteFile(), true);
-					bw = new BufferedWriter(fw);
-					bw.write(data);
-					bw.write("Patient Record Report\n");
-					bw.write("Report Number: "+a+"\n\n");
-					bw.write("Report Created By: "+txtE.getText()+"\n");
-					String body=null;
-					String fileID = null;
-					String imageID=null;
-					Blob image=null;
-					String dateTaken=null;
-					String mode=null;
-					String desc=null;
-					int patID = 0;
-					String fname=null;
-					String lname=null;
-					String dob=null;
-					String gen=null;
-					String phone=null;
-					String addressOne=null;
-					String addressTwo=null;
-					String addressCity=null;
-					String addressState=null;
-					String addressZip=null;
-					try {
-						ResultSet ans=stmt.executeQuery("select * from report where reportID="+a+";");
-						while(ans.next())
-						{
-							body=ans.getString("reportBody");
-							fileID=ans.getString("fileID");
-						}
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					bw.write("File ID:"+fileID+"\n");
-					bw.write("\n");
-					try {
-						ResultSet abs=stmt.executeQuery("select * from images where reportID="+a+";");
-						while(abs.next())
-						{
-							image=abs.getBlob("image");
-							dateTaken=abs.getString("dateTaken");
-							mode=abs.getString("modality");
-							desc=abs.getString("description");
-						}
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					try {
-						ResultSet pat=stmt.executeQuery("select patientID from file where fileID="+fileID);
-						while(pat.next())
-						{
-							patID=pat.getInt("patientID");
-						}
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					ResultSet all;
-					try {
-						all = stmt.executeQuery("select * from patient where patientID="+patID+";");
-					while(all.next())
-					{
-						fname=all.getString("fname");
-						lname=all.getString("lname");
-						dob=all.getString("dateOfBirth");
-						gen=all.getString("gender");
-						phone=all.getString("phoneNum");
-						addressOne=all.getString("addressOne");
-						addressTwo=all.getString("addressTwo");
-						addressCity=all.getString("addressCity");
-						addressState=all.getString("addressState");
-						addressZip=all.getString("addressZip");
-					}
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					bw.write("Patient Information:\n\n");
-					bw.write("-----------------------------------------------\n");
-					bw.write("Patient Name: "+fname+" "+lname+"\n");
-					bw.write("Date of Birth: "+dob+"\n");
-					bw.write("Gender: "+gen+"\n");
-					bw.write("Phone Number: "+phone+"\n");
-					bw.write("Address: "+addressOne+"\n");
-					bw.write(addressTwo+"\n");
-					bw.write(addressCity+","+addressState+" "+addressZip+"\n");
-					try {
-						all = stmt.executeQuery("select * from vitals where patientID="+patID+"&& reportID='"+reportID+"';");
-					while(all.next())
-					{
-						fname=all.getString("fname");
-						lname=all.getString("lname");
-						dob=all.getString("dateOfBirth");
-						gen=all.getString("gender");
-						phone=all.getString("phoneNum");
-						addressOne=all.getString("addressOne");
-						addressTwo=all.getString("addressTwo");
-						addressCity=all.getString("addressCity");
-						addressState=all.getString("addressState");
-						addressZip=all.getString("addressZip");
-					}
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					System.out.println("Done");
-					Desktop.getDesktop().open( file);
-
-				} catch (IOException e) {
-
-					e.printStackTrace();
-
-				} finally {
-
-					try {
-
-						if (bw != null)
-							bw.close();
-
-						if (fw != null)
-							fw.close();
-
-					} catch (IOException ex) {
-
-						ex.printStackTrace();
-
-					}
-				}
-
+					// if file doesnt exists, then create itjpg
+			if (!file.exists()) 
+			{
+				file.createNewFile();
 			}
-}
+			String reportID = a;
+			try 
+			{
+				ResultSet ans=stmt.executeQuery("select * from report where reportID="+a+";");
+				while(ans.next())
+				{
+					body=ans.getString("reportBody");
+					fileID=ans.getString("fileID");
+				}
+			} 
+			catch (SQLException e) 
+			{
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try 
+			{
+				ResultSet abs=stmt.executeQuery("select * from images where reportID="+a+";");
+				while(abs.next())
+				{
+					
+					dateTaken=abs.getString("dateTaken");
+					mode=abs.getString("modality");
+					desc=abs.getString("description");
+					direct=abs.getString("image");
+				}
+			} 
+			catch (SQLException e) 
+			{
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try 
+			{
+				ResultSet pat=stmt.executeQuery("select patientID from file where fileID="+fileID);
+				while(pat.next())
+				{
+					patID=pat.getInt("patientID");
+				}
+			} 
+			catch (SQLException e) 
+			{
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ResultSet all;
+			try 
+			{
+				all = stmt.executeQuery("select * from patient where patientID="+patID+";");
+				while(all.next())
+					{
+						
+						fname=all.getString("fname");
+						lname=all.getString("lname");
+						dob=all.getString("dateOfBirth");
+						gen=all.getString("gender");
+						phone=all.getString("phoneNum");
+						addressOne=all.getString("addressOne");
+						addressTwo=all.getString("addressTwo");
+						addressCity=all.getString("addressCity");
+						addressState=all.getString("addressState");
+						addressZip=all.getString("addressZip");
+						
+					}
+			} 
+			catch (SQLException e) 
+			{
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
+					
+			try 
+			{
+						String sql="select * from vitals where patientID="+patID+"&& reportID='"+reportID+"';";
+						System.out.println(sql);
+						ResultSet all1 = stmt.executeQuery(sql);
+						String timeTaken=null;
+						String pulseRate=null;
+						String preExist=null;
+						String bloodPressure=null;
+						while(all1.next())
+					{
+						timeTaken=all1.getString("timeTaken");
+						pulseRate=all1.getString("pulseRate");
+						bloodPressure=all1.getString("bloodPressure");
+						preExist=all1.getString("preExConditions");
+					}
+	
+		XWPFDocument doc = new XWPFDocument();
+		XWPFParagraph p = doc.createParagraph();
+		XWPFRun run = p.createRun();
+		String[] IMageargs={
+		             direct
+			        };
+		String data = "PATIENT REPORT \nDOWNLOADED: "+getTime()+"\n\n"+"Patient Record Report\n"+"Report Number: "+
+				a+"\n"+"Report Created By: "+txtE.getText()+"\n"+"File ID:"+fileID+"\n\n"+"Patient Information:\n"+
+			    "-----------------------------------------------\n"+"Patient Name: "+fname+" "+lname+"\n"+"Date of Birth: "+dob+"\n"+
+			    "Gender: "+gen+"\n"+"Phone Number: "+phone+"\n"+"Address: "+addressOne+"\n"+addressTwo+"\n"+addressCity+","+addressState+" "+addressZip+"\n"+
+			    "-----------------------------------------------\n"+"Patient Vitals \n"+"Time Taken: "+timeTaken+"\n"+"Pulse Rate: "+pulseRate+"\n"+
+			    "Blood Pressure: "+bloodPressure+"\n"+"Pre-existing Conditions: "+preExist+"\n\n Report: \n"+body+"\n";
+			    run.setFontFamily("Times New Roman");
+			    if (data.contains("\n")) {
+		        String[] lines = data.split("\n");
+		         run.setText(lines[0], 0); // set first line into XWPFRun
+		         for(int i=1;i<lines.length;i++){
+		         // add break and insert new text
+		                    run.addBreak();
+		                    run.setText(lines[i]);
+		                }
+		            } else {
+		                run.setText(data, 0);
+		            }
+			        for (String imgFile : IMageargs) {
+			            int format=XWPFDocument.PICTURE_TYPE_JPEG;
+			            //xwpfRun.setText(imgFile);
+			            run.addBreak();
+			            run.addPicture (new FileInputStream(imgFile), format, imgFile, Units.toEMU(200), Units.toEMU(200)); // 200x200 pixels
+			            //xwpfRun.addBreak(BreakType.PAGE);
+			        }
+			        String data2 = "\nModality: "+mode+"\n Date Taken: "+dateTaken+"\n Description: "+desc;
+			        run.setFontFamily("Times New Roman");
+			    	if (data2.contains("\n")) {
+		                String[] lines = data2.split("\n");
+		               // run.setText(lines[0], 0); // set first line into XWPFRun
+		                for(int i=1;i<lines.length;i++){
+		                    // add break and insert new text
+		                    run.addBreak();
+		                    run.setText(lines[i]);
+		                }
+		            } else {
+		                run.setText(data, 0);
+		            }
+			        FileOutputStream out = new FileOutputStream(file);
+			        doc.write(out);
+			        out.close();
+				     Desktop.getDesktop().open(file);
+			} 
+			catch (SQLException e) 
+			{
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}finally{}}}
+
