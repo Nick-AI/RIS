@@ -1,6 +1,3 @@
-package Billing;
-
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,38 +8,40 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
-import java.awt.GridBagLayout;
+import java.util.List;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
-import EntranceControllers.LogInController;
-import application.openSQL;
-
 import java.awt.Color;
 import javax.swing.JRadioButton;
-import javax.swing.JToggleButton;
-import javax.swing.JEditorPane;
+import javax.swing.WindowConstants;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import javax.swing.JTable;
+import javax.swing.JSeparator;
 
 public class billing extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtID;
-	private JTextField tctDOB;
+	private JTextField txtDOB;
 	private JTextField txtDate;
 	private JTextField txtName;
 	private JTextField txtTotal;
@@ -50,74 +49,46 @@ public class billing extends JFrame {
 	private JTextField txtOther;
 	private static Statement stmt;
 	private static Connection con;
-	private String physician=LogInController.getName();
-	private double total=0;
+	private String physician="Dr. Bryce Pain";
+	private double total=0.0;
+	private int counter=0;
+	private JTable table;
+	private JRadioButton rdA;
+	private JRadioButton rdB;
+	private JRadioButton rdC;
+	private JRadioButton rdD;
+	private JRadioButton rdE;
+	private JRadioButton rdF;
+	private JRadioButton rdG;
+	private JRadioButton rdH;
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void billingStart()
-	//public static void main(String[] args)
-	//THIS WILL NEED TO BE CHANGED TO PARAMETERS (Physician,con)
-	{
-		/*EventQueue.invokeLater(new Runnable() 
-		{
-			public void run() 
-			{
-				//con2=con;
-				try 
-				{
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
 					Class.forName("com.mysql.jdbc.Driver");  
 					con=(Connection) DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/RISystem","root","usafcdr86652");  
+					"jdbc:mysql://localhost:3306/rsvpsystem","root","ResidenceLife1873!");  
 					stmt=(Statement) con.createStatement();  
 					billing frame = new billing();
 					frame.setVisible(true);
-				} 
-				catch (Exception e) 
-				{
-					System.out.println("Credentials for SQL Server need to be changed for your system.");
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-		});*/
-		
-		//created admin account if it does not already exist
-		try 
-		{
-			String q1 = "select * from patientinfo WHERE fname = 'john' AND lname = 'doe';";
-			ResultSet rs= openSQL.stmt.executeQuery(q1);
-			
-			if (rs.next())
-			{
-				System.out.println("User id is already registered");
-			}
-			else
-			{
-				// Inserting data in database
-	            String q2 = "insert into patientinfo values('" +"john"+ "', '" +"doe"+ 
-	                                  "', " +0000+ ", 01/01/2000, '"+"M"+"');";
-	            int x = openSQL.stmt.executeUpdate(q2);
-	            if (x > 0)            
-	                System.out.println("Successfully Inserted");            
-	            else           
-	                System.out.println("Insert Failed");
-			}
-		} 
-		
-		catch (SQLException e1) 
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		billing frame = new billing();
-		frame.setVisible(true);
+		});
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public billing() {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setResizable(false);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
 		setTitle("Billing");
 		
@@ -133,9 +104,9 @@ public class billing extends JFrame {
 		lblBillingRequestFor.setBounds(426, 11, 293, 20);
 		contentPane.add(lblBillingRequestFor);
 		
-		JLabel lblPatientIdNumber = new JLabel("Patient ID Number");
-		lblPatientIdNumber.setBounds(10, 92, 103, 14);
-		contentPane.add(lblPatientIdNumber);
+		JLabel lblIDNum = new JLabel("Patient ID Number");
+		lblIDNum.setBounds(10, 92, 103, 14);
+		contentPane.add(lblIDNum);
 		
 		txtID = new JTextField();
 		txtID.setBounds(118, 89, 122, 20);
@@ -146,14 +117,14 @@ public class billing extends JFrame {
 		lblDob.setBounds(10, 124, 46, 14);
 		contentPane.add(lblDob);
 		
-		tctDOB = new JTextField();
-		tctDOB.setBounds(51, 121, 95, 20);
-		contentPane.add(tctDOB);
-		tctDOB.setColumns(10);
+		txtDOB = new JTextField();
+		txtDOB.setBounds(51, 121, 95, 20);
+		contentPane.add(txtDOB);
+		txtDOB.setColumns(10);
 		
-		JLabel lblTodaysDate = new JLabel("Today's Date:");
-		lblTodaysDate.setBounds(10, 52, 78, 14);
-		contentPane.add(lblTodaysDate);
+		JLabel lblDate = new JLabel("Today's Date:");
+		lblDate.setBounds(10, 52, 78, 14);
+		contentPane.add(lblDate);
 		String date=getTime();
 		txtDate = new JTextField("  "+ date);
 		txtDate.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -172,10 +143,10 @@ public class billing extends JFrame {
 		txtpnfillFormOut.setBounds(436, 36, 268, 70);
 		contentPane.add(txtpnfillFormOut);
 		
-		JButton btnNext = new JButton("Next");
+		JButton btnNext1 = new JButton("Next");
 		
-		btnNext.setBounds(272, 88, 89, 23);
-		contentPane.add(btnNext);
+		btnNext1.setBounds(272, 88, 89, 23);
+		contentPane.add(btnNext1);
 		
 		JPanel panel = new JPanel();
 		panel.setVisible(false);
@@ -197,27 +168,27 @@ public class billing extends JFrame {
 		txtName.setColumns(10);
 		
 		JLabel lblServicesIncurred = new JLabel("Services Incurred:");
-		lblServicesIncurred.setBounds(22, 88, 137, 14);
+		lblServicesIncurred.setBounds(714, 65, 137, 14);
 		panel.add(lblServicesIncurred);
 		
-		JRadioButton rdA = new JRadioButton("X-Ray");
-		rdA.setBounds(22, 109, 137, 23);
+		rdA = new JRadioButton("X-Ray");
+		rdA.setBounds(714, 86, 137, 23);
 		panel.add(rdA);
 		
-		JRadioButton rdB = new JRadioButton("MRI");
-		rdB.setBounds(22, 135, 137, 23);
+		rdB = new JRadioButton("MRI");
+		rdB.setBounds(714, 112, 137, 23);
 		panel.add(rdB);
 		
-		JRadioButton rdC = new JRadioButton("CT Scan");
-		rdC.setBounds(22, 161, 137, 23);
+		rdC = new JRadioButton("CT Scan");
+		rdC.setBounds(714, 138, 137, 23);
 		panel.add(rdC);
 		
-		JRadioButton rdD = new JRadioButton("Ultrasound");
-		rdD.setBounds(22, 187, 137, 23);
+		rdD = new JRadioButton("Ultrasound");
+		rdD.setBounds(714, 164, 137, 23);
 		panel.add(rdD);
 		
-		JRadioButton rdF = new JRadioButton("Mammography");
-		rdF.setBounds(22, 239, 137, 23);
+		rdF = new JRadioButton("Mammography");
+		rdF.setBounds(714, 213, 137, 23);
 		panel.add(rdF);
 		
 		JLabel label = new JLabel("");
@@ -225,12 +196,12 @@ public class billing extends JFrame {
 		panel.add(label);
 		
 		JLabel lblSubtotal = new JLabel("TOTAL: ");
-		lblSubtotal.setBounds(77, 324, 46, 14);
+		lblSubtotal.setBounds(872, 249, 101, 14);
 		panel.add(lblSubtotal);
 		
 		txtTotal = new JTextField();
 		txtTotal.setEditable(false);
-		txtTotal.setBounds(133, 321, 101, 20);
+		txtTotal.setBounds(872, 265, 101, 20);
 		panel.add(txtTotal);
 		txtTotal.setColumns(10);
 		
@@ -239,16 +210,17 @@ public class billing extends JFrame {
 		panel.add(horizontalStrut);
 		
 		txtOther = new JTextField();
-		txtOther.setBounds(241, 162, 153, 20);
+		txtOther.setBounds(913, 113, 153, 20);
 		panel.add(txtOther);
 		txtOther.setColumns(10);
 		
-		JRadioButton rdH = new JRadioButton("Other Incurred Amounts");
-		rdH.setBounds(221, 135, 191, 23);
-		panel.add(rdH);
+		rdG = new JRadioButton("Other Incurred Amounts");
+		rdG.setBounds(903, 86, 191, 23);
+		panel.add(rdG);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(588, 146, 451, 146);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_1.setBounds(714, 317, 451, 146);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -263,63 +235,146 @@ public class billing extends JFrame {
 		textField_6.setColumns(10);
 		
 		JRadioButton rdbtnApprove = new JRadioButton("All payments are correct and accurate");
-		rdbtnApprove.setBounds(107, 61, 227, 23);
+		rdbtnApprove.setBounds(97, 61, 264, 23);
 		panel_1.add(rdbtnApprove);
-		
+		panel_1.setVisible(false);
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(173, 91, 89, 23);
 		panel_1.add(btnSubmit);
-		JRadioButton rdG = new JRadioButton("PET Scan");
-		rdG.setBounds(22, 213, 137, 20);
-		panel.add(rdG);
+		
+		JLabel agreelbl = new JLabel("AGREE");
+		agreelbl.setForeground(Color.RED);
+		agreelbl.setBounds(46, 65, 47, 14);
+		panel_1.add(agreelbl);
+		agreelbl.setVisible(false);
+		JRadioButton rdE = new JRadioButton("PET Scan");
+		rdE.setBounds(714, 190, 137, 20);
+		panel.add(rdE);
+		
+		
 		JButton btnNewButton = new JButton("Next");
 		btnNewButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				total=0;
+				counter=0;
 				if(rdA.isSelected())
 				{
 					total=total+500.00;
+					counter++;
 				}
 				if(rdB.isSelected())
 				{
 					total=total+2000.00;
+					counter++;
 				}
 				if(rdC.isSelected())
 				{
 					total=total+1200.00;
+					counter++;
 				}
 				if(rdD.isSelected())
 				{
 					total=total+263.00;
+					counter++;
 				}
 				if(rdF.isSelected())
 				{
 					total=total+102.00;
+					counter++;
 				}
-				if(rdG.isSelected())
+				if(rdE.isSelected())
 				{
 					total=total+5000.00;
+					counter++;
 				}
-				if(rdH.isSelected())
+				if(rdG.isSelected())
 				{
 					String totalAmount=txtOther.getText();
 					double amountTotal=Double.parseDouble(totalAmount);
 					total=total+amountTotal;
+					counter++;
 				}
 				//NumberFormat formatter = NumberFormat.getCurrencyInstance();
 				String amount=Double.toString(total);
 				//String amount2=formatter.format(amount);
-				txtTotal.setText(" $ "+amount);
 				
+				if(counter>0)
+				{
+			
+				txtTotal.setText(" $ "+amount);
+				panel_1.setVisible(true);
+				btnNewButton.setText("Update Values");
+				}
+				else
+				{}
 				
 				
 			}
 		});
-		btnNewButton.setBounds(269, 213, 89, 23);
+		btnNewButton.setBounds(935, 189, 125, 23);
 		panel.add(btnNewButton);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(185, 167, 101, 309);
+		panel.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setColumnHeaderView(table);
+		scrollPane.setColumnHeaderView(table);
+		scrollPane.setViewportView(table);
+		JLabel lblBills = new JLabel("Bills");
+		lblBills.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBills.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblBills.setBounds(22, 95, 417, 14);
+		panel.add(lblBills);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(52, 120, 352, 2);
+		panel.add(separator);
+		
+		JLabel lblSelectABill = new JLabel("Select a Bill ID to Begin Billing");
+		lblSelectABill.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectABill.setBounds(148, 142, 176, 14);
+		panel.add(lblSelectABill);
+		
+		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row=table.getSelectedRow();
+				Object a=table.getValueAt(row, 0);
+				String name=a.toString();
+				System.out.println(name);
+				try {
+					String totalList=null;
+					ResultSet list=stmt.executeQuery("select procedureList from billing where billID="+name);
+					while(list.next())
+					{
+						totalList=list.getString("procedureList");
+					}
+					System.out.println(totalList);
+					
+					List<String> elephantList = Arrays.asList(totalList.split(","));
+					for(int i=0;i<elephantList.size();i++)
+					{
+						selecter(elephantList.get(i));
+						//System.out.println(elephantList.get(i));
+					}
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		btnNext.setBounds(313, 245, 89, 23);
+		panel.add(btnNext);
 		
 		
 		btnSubmit.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnApprove.isSelected())
 				{
@@ -331,13 +386,22 @@ public class billing extends JFrame {
 				}
 				else
 				{
+					agreelbl.setVisible(true);
+					
+					
+					
+					
 				}
+				
+				
+				
 				
 			}
 		});
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false); //you can't see me!
 				dispose();
@@ -346,14 +410,16 @@ public class billing extends JFrame {
 		btnExit.setBounds(994, 49, 83, 20);
 		contentPane.add(btnExit);
 		
-		JLabel lblMmddyyyy = new JLabel("MM/DD/YYYY");
+		JLabel lblMmddyyyy = new JLabel("YYYY-MM-DD");
 		lblMmddyyyy.setBounds(156, 124, 122, 14);
 		contentPane.add(lblMmddyyyy);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtID, txtDOB, btnNext1, txtTotal, rdG, txtOther, btnNewButton, btnSubmit, btnExit}));
 		
-		btnNext.addActionListener(new ActionListener() {
+		btnNext1.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String ID =txtID.getText();
-				String DOB=tctDOB.getText();
+				String DOB=txtDOB.getText();
 				if(ID.equals("")||DOB.equals("")||DOB.equals("MM/DD/YYYY"))
 				{
 					
@@ -363,21 +429,29 @@ public class billing extends JFrame {
 				
 				ResultSet cur;
 				try {
-					String sql=("select * from patientInfo where ID="+ID+" && DOB="+DOB);
-					cur = openSQL.stmt.executeQuery(sql);
+					String sql=("select * from patient where patientID='"+ID+"' && dateofBirth='"+DOB+"';");
+					cur = stmt.executeQuery(sql);
+					//openSQL
 					while(cur.next())
 					{
 					panel.setVisible(true);
-					btnNext.setVisible(false);
+					//btnNext1.setVisible(false);
 					String fname=cur.getString("fname");
 					String lname=cur.getString("lname");
 					String fullname=fname+" "+lname;
 					txtName.setText(fullname);
-					
+					txtID.setEditable(false);
+					txtDOB.setEditable(false);
 					
 				}} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				try {
+					filledRequest();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				}
 			
@@ -387,6 +461,67 @@ public class billing extends JFrame {
 		
 		
 		
+		
+		
+	}
+	public void filledRequest() throws SQLException
+	{
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Bill ID"
+			}
+		));
+		
+
+			//table_1.getColumnModel().getColumn(3).setPreferredWidth(100);
+		String sql="select * from billing where patientID='"+txtID.getText()+"' && inProgress="+0+";";
+		ResultSet cur = stmt.executeQuery(sql);
+		//System.out.println("select * from loginLog");
+		//int counter2=0; 
+		try {
+			while(cur.next())
+			{
+				String A=cur.getString("billID");
+					
+				DefaultTableModel model2 = (DefaultTableModel) table.getModel();
+				model2.addRow(new Object[]{A});
+				
+				
+				//counter2++;
+			}
+			//lblYouHave.setText("You have "+counter2+" more Image request(s) for today.");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//cur1 = stmt.executeQuery("Select * from resident where ID=");
+			
+			
+		
+		
+	}
+	
+	
+	public void selecter(String word)
+	{
+		 switch (word) {
+         case "XRAY": rdA.setSelected(true);
+                  break;
+         case "MRI":  rdB.setSelected(true);
+                  break;
+         case "CT": rdC.setSelected(true);
+                  break;
+         case "ULTRA":  rdD.setSelected(true);
+                  break;
+         case "PET":  rdE.setSelected(true);
+                  break;
+         case "MAMMO":  rdF.setSelected(true);
+        
+         default: rdG.setSelected(true);
+                  break;
+		 }
 		
 		
 	}
