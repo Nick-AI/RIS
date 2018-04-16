@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.1407035175879397" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Radiologist.RadController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="53.0" prefWidth="598.0">
+         <children>
+            <VBox prefHeight="66.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MenuBar VBox.vgrow="ALWAYS">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Close" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </MenuBar>
+                  <Label id="radTitleText" fx:id="radTitleText" text="RIS - RADIOLOGIST" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+      <HBox prefHeight="339.0" prefWidth="934.0">
+         <children>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="364.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="340.0" prefWidth="443.0">
+                     <children>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="67.0" prefWidth="443.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label id="radWelcomeLabel" fx:id="radWelcomeLabel" alignment="TOP_LEFT" layoutX="11.0" layoutY="4.0" prefHeight="18.0" prefWidth="434.0" text="Welcome, Dr. Bla. " />
+                              <Label id="radNumOfReportsLabel" fx:id="radNumOfReportsLabel" alignment="TOP_LEFT" layoutX="11.0" layoutY="22.0" prefHeight="39.0" prefWidth="434.0" text="Currently, there are X reports waiting to be finished" wrapText="true" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="267.0" prefWidth="443.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox prefHeight="270.0" prefWidth="443.0">
+                                 <children>
+                                    <AnchorPane prefHeight="270.0" prefWidth="230.0" HBox.hgrow="ALWAYS" />
+                                    <AnchorPane prefHeight="270.0" prefWidth="209.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Pagination layoutX="-2.0" layoutY="-1.0" pageCount="10" prefHeight="278.0" prefWidth="210.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="412.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TableView id="procedureTableID" fx:id="procedureTableID" layoutX="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn id="welctableLbl1" fx:id="welctableLbl1" editable="false" prefWidth="135.2001098394394" text="Procedure" />
+                      <TableColumn id="welctableLbl2" fx:id="welctableLbl2" prefWidth="136.7999267578125" text="Patient Name" />
+                        <TableColumn id="welctableLbl3" fx:id="welctableLbl3" prefWidth="93.60009765625" text="Patient ID" />
+                        <TableColumn id="welctableLbl4" fx:id="welctableLbl4" prefWidth="130.3997802734375" text="Procedure ID" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+  </items>
+</SplitPane>
