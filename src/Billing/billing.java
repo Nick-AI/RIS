@@ -1,3 +1,5 @@
+package Billing;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -64,23 +66,24 @@ public class billing extends JFrame {
 	
 	/**
 	 * Launch the application.
+	 * @return 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
+	//public static void main(String[] args) {
+	public static void billingStart() {
+		//EventQueue.invokeLater(new Runnable() {
+			//@Override
+			//public void run() {
 				try {
 					Class.forName("com.mysql.jdbc.Driver");  
-					con=(Connection) DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/rsvpsystem","root","ResidenceLife1873!");  
+					con=(Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/rissystem","root","usafcdr86652"); 
 					stmt=(Statement) con.createStatement();  
 					billing frame = new billing();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
-		});
+			//}
+		//});
 	}
 
 	/**

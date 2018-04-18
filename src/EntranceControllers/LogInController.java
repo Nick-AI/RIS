@@ -2,6 +2,8 @@ package EntranceControllers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.Date;
 import java.util.Objects;
 
 import application.Main;
@@ -24,7 +26,7 @@ public class LogInController
 	Scene scene;
 	Parent root;
 	
-	static String UserName, Password, Name;
+	static String UserName, Password, fName, lName, uName;
 	static int Level;
 	static int staffID;
 	
@@ -71,14 +73,19 @@ public class LogInController
 			if (rs.next())
 			{
 				Level = rs.getInt(3);
-				Name = rs.getString(1);
+				uName = rs.getString(1);
 				staffID = rs.getInt(4);
+				Date date = new Date();
+			    Time time = new Time(date.getTime());
+				String q2 = "REPLACE into presentstaff SET staffID = '"+ staffID +"', checkIN = "+time+
+						", clockedOut = "+ 0 +";";
 				stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 				root = FXMLLoader.load(getClass().getResource("/EntranceView/MainMenu.fxml"));
 				scene = new Scene(root);
 				stage.setScene(scene);
 				//MainMenuController.ButtonVitals.setVisible(false);
-				System.out.println(Level+Name);
+				System.out.println(Level+uName);	
+				
 			}
 			else
 			{
@@ -86,7 +93,23 @@ public class LogInController
 				userNameField.setText("");
 			}
 		}
+		catch (SQLException e1) 
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
+		try
+		{
+		String q2 = "select * from staff WHERE staffID = '"+staffID+"';";
+		ResultSet rs2= openSQL.stmt.executeQuery(q2);
+			if (rs2.next())
+			{
+					fName = rs2.getString(4);
+					lName = rs2.getString(5);
+			}
+			
+		}
 		catch (SQLException e1) 
 		{
 			// TODO Auto-generated catch block
@@ -138,14 +161,32 @@ public class LogInController
 		Password = password;
 	}
 
-	public static String getName() 
+	public static String getUName() 
 	{
-		return Name;
+		return uName;
 	}
 
-	public static void setName(String name) 
+	public static void setUName(String name) 
 	{
-		Name = name;
+		uName = name;
+	}
+	public static String getFName() 
+	{
+		return fName;
+	}
+
+	public static void setFName(String name) 
+	{
+		fName = name;
+	}
+	public static String getLName() 
+	{
+		return lName;
+	}
+
+	public static void setLName(String name) 
+	{
+		lName = name;
 	}
 
 	public static int getLevel() 

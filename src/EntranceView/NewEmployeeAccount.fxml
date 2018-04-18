@@ -55,6 +55,14 @@
                   <Label layoutX="361.0" layoutY="60.0" text="Confirm User Password" />
                   <TextField fx:id="nameField" layoutX="-1.0" layoutY="82.0" />
                   <Label layoutX="1.0" layoutY="60.0" text="User's Full Name (First Last)" />
+                  <TextField fx:id="fNameField" layoutX="176.0" layoutY="23.0" />
+                  <TextField fx:id="lNameField" layoutX="176.0" layoutY="82.0" />
+                  <TextField fx:id="ssnField" layoutY="150.0" promptText="000000000" />
+                  <Label layoutX="221.0" layoutY="5.0" text="First Name" />
+                  <Label layoutX="222.0" layoutY="60.0" text="Last Name" />
+                  <Label layoutX="59.0" layoutY="120.0" text="SSN" />
+                  <Label layoutX="408.0" layoutY="120.0" text="DOB" />
+                  <TextField fx:id="dobField" layoutX="346.0" layoutY="150.0" promptText="2000-01-01" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">

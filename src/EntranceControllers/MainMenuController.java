@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 public class MainMenuController 
 {
+	@SuppressWarnings("unused")
 	private Main main;
 	Stage stage;
 	Scene scene;

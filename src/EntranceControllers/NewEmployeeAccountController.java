@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -36,6 +37,10 @@ public class NewEmployeeAccountController
 	@FXML PasswordField confirmPasswordField;
 	@FXML ChoiceBox<String> levelChoiceBox;
 	@FXML TextField nameField;
+	@FXML TextField fNameField;
+	@FXML TextField lNameField;
+	@FXML TextField ssnField;
+	@FXML TextField dobField;
 
 	//used to connect the main class with the controller
 	public void setMain(Main M)
@@ -67,6 +72,12 @@ public class NewEmployeeAccountController
 		String ConfirmPass = confirmPasswordField.getText();
 		String AdminUserName = adminUserNameField.getText();
 		String AdminPassword = adminPasswordField.getText();
+		String fName = fNameField.getText();
+		String lName = lNameField.getText();
+		int SSN = Integer.parseInt(ssnField.getText());
+		String DOB = dobField.getText();	
+		int ID = 0;
+		
 		int Level = 0;
 		int adminLevel = 0;
 		boolean check1 = false;
@@ -99,6 +110,7 @@ public class NewEmployeeAccountController
 		{
 			Level = 6;
 		}
+		int salary = Level;
 		
 		//checks to see if adminUser exist
 		try 
@@ -179,8 +191,15 @@ public class NewEmployeeAccountController
 		{
 			try 
 			{
+				String q4 = "select staffID from Staff ORDER BY staffID DESC LIMIT 1";
+				ResultSet rs4 = openSQL.stmt.executeQuery(q4);
+				if(rs4.next())
+				{
+					ID = rs4.getInt(1)+1;
+				}
 				String q1 = "select * from login WHERE username = '"+ UserName +"' AND password = '"+Password+"';";
 				ResultSet rs3= openSQL.stmt.executeQuery(q1);
+				
 				
 				if (rs3.next())
 				{
@@ -189,10 +208,13 @@ public class NewEmployeeAccountController
 				else
 				{
 					// Inserting data in database
-		            String q2 = "insert into login values('" +UserName+ "', '" +Password+ 
-		                                  "', '" +Level+ "', '" +Name+ "');";
+		            String q2 = "insert into staff values('" +ID+ "', '" +Level+ "', '" +
+		            		Level+ "', '" +fName+ "', '"+lName+"', '" +DOB+"', '"+SSN+"');";
 		            int x = openSQL.stmt.executeUpdate(q2);
-		            if (x > 0) 
+		            String q3 = "insert into login values('" +UserName+ "', '" +Password+ 
+                            "', '" +Level+ "', '" +ID+ "');";
+		            int y = openSQL.stmt.executeUpdate(q3);
+		            if ((x > 0) && (y > 0)) 
 		            {           
 		                System.out.println("Successfully Inserted");  
 		                failLabel.setText("User Created!");

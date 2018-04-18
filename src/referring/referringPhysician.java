@@ -1,3 +1,5 @@
+package referring;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.IllegalFormatException;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import javax.swing.JButton;
@@ -35,6 +38,8 @@ import org.apache.poi.xwpf.usermodel.Document;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+
+import EntranceControllers.LogInController;
 
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -68,14 +73,13 @@ public class referringPhysician {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+	public static void referringStart() {
+		//EventQueue.invokeLater(new Runnable() {
+			//public void run() {
 			
 					try {
 						Class.forName("com.mysql.jdbc.Driver");  
-						con=DriverManager.getConnection(  
-						"jdbc:mysql://localhost:3306/rsvpsystem","root","ResidenceLife1873!");  
+						con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/rissystem","root","usafcdr86652");  
 						stmt=con.createStatement();  
 					referringPhysician window = new referringPhysician();
 					
@@ -85,7 +89,9 @@ public class referringPhysician {
 					e.printStackTrace();
 				}
 				
-			}});
+			//}
+			//}
+			//);
 	}
 
 	/**
@@ -105,7 +111,7 @@ public class referringPhysician {
 		frmReferringPhysicianView.setTitle("Referring Physician View");
 		frmReferringPhysicianView.setResizable(false);
 		frmReferringPhysicianView.setBounds(100, 100, 1459, 763);
-		frmReferringPhysicianView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmReferringPhysicianView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmReferringPhysicianView.getContentPane().setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(SwingConstants.TOP);
@@ -122,7 +128,7 @@ public class referringPhysician {
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
-		JLabel lblWelcome = new JLabel("Welcome \\\\Referring Physician\\\\");
+		JLabel lblWelcome = new JLabel("Welcome " + LogInController.getFName() + " " + LogInController.getLName());
 		lblWelcome.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblWelcome.setBounds(10, 31, 274, 22);
 		panel_3.add(lblWelcome);
@@ -257,7 +263,7 @@ public class referringPhysician {
 				catch (ArrayIndexOutOfBoundsException e)
 				{
 					lblError1.setVisible(true);
-				} catch (InvalidFormatException e) {
+				} catch (IllegalFormatException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {

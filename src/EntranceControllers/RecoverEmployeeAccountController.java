@@ -108,7 +108,7 @@ public class RecoverEmployeeAccountController
 				
 				if (rs.next())
 				{
-					Password = rs.getString(4);
+					Password = rs.getString(2);
 					
 					failLabel.setText("The password is: " + Password);
 				}
