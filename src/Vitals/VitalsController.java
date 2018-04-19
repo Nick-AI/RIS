@@ -61,7 +61,7 @@ public class VitalsController
 		patientID = rs.getInt(1);
 		
 		//String q2 = "select * from report WHERE patientID = '"+patientID+"' AND beingModified = 1;";
-		String q2 = "select * from report where (patientID,lastModifiedDate ) in (select patientID, max(lastModifiedDate) as lastModifiedDate from report group by patientID);";
+		String q2 = "select * from report where ("+patientID+") in (select patientID, max(lastModifiedDate) as lastModifiedDate from report group by patientID);";
 		ResultSet rs1= openSQL.stmt.executeQuery(q2);
 		reportID = rs1.getInt(1);
 		
