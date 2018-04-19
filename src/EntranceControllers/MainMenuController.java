@@ -133,11 +133,11 @@ public class MainMenuController
 	public void vitals(ActionEvent event) throws Exception
 	{
 		System.out.println("vitals");
-		/*stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+		stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
-		root = FXMLLoader.load(getClass().getResource("/EntranceView/Vitals.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/Vitals/VitalsView.fxml"));
 		scene = new Scene(root);
-		stage.setScene(scene);*/
+		stage.setScene(scene);
 	}
 	
 	public void imaging(ActionEvent event) throws Exception
