@@ -1,6 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -21,22 +24,28 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="ButtonLogIn" layoutX="334.0" layoutY="444.0" mnemonicParsing="false" onAction="#logIn" text="Log In " />
-                  <PasswordField fx:id="passwordField" layoutX="289.0" layoutY="236.0" />
-                  <TextField fx:id="userNameField" layoutX="289.0" layoutY="189.0" />
-                  <Label layoutX="335.0" layoutY="215.0" text="Password" />
-                  <Label layoutX="333.0" layoutY="171.0" text="User Name" />
                   <Label fx:id="failPasswordLabel" layoutX="113.0" layoutY="381.0" />
+                  <Label layoutX="346.0" layoutY="14.0" text="Pulse" />
+                  <Label layoutX="320.0" layoutY="84.0" text="Blood Pressure" />
+                  <TextArea fx:id="preExArea" layoutX="260.0" layoutY="257.0" prefHeight="200.0" prefWidth="200.0" />
+                  <TextField fx:id="bpField" layoutX="286.0" layoutY="102.0" />
+                  <TextField fx:id="pulseField" layoutX="286.0" layoutY="32.0" />
+                  <Label layoutX="299.0" layoutY="227.0" text="Pre-Existing Conditions" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="lastNameField" layoutX="286.0" layoutY="38.0" />
+                  <PasswordField fx:id="dobField" accessibleRole="TEXT_FIELD" alignment="CENTER" layoutX="286.0" layoutY="102.0" promptText="2000-01-01" />
+                  <Label layoutX="326.0" layoutY="84.0" text="Pataint DOB" />
+                  <Label layoutX="311.0" layoutY="5.0" text="Patiant Last Name" />
+                  <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
+               </children></AnchorPane>
             <AnchorPane prefHeight="238.0" prefWidth="720.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="ButtonNewAccount" layoutX="293.0" layoutY="14.0" mnemonicParsing="false" onAction="#newAccount" text="Create a New Account" />
-                  <Button fx:id="ButtonRecover" layoutX="304.0" layoutY="61.0" mnemonicParsing="false" onAction="#recover" text="Recover Password" />
+                  <Button fx:id="logButton" layoutX="333.0" layoutY="82.0" mnemonicParsing="false" onAction="#log" text="Log" />
                </children></AnchorPane>
          </children>
       </GridPane>
    </children>
 </AnchorPane>
-
