@@ -22,9 +22,10 @@
                <children>
                   <MenuBar VBox.vgrow="ALWAYS">
                     <menus>
-                      <Menu mnemonicParsing="false" text="File">
+                      <Menu mnemonicParsing="false" text="Patient">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Close" />
+                              <MenuItem fx:id="menuFileClosePreview" mnemonicParsing="false" text="Show Preview" />
+                          <MenuItem fx:id="menuFileClosePreview" mnemonicParsing="false" text="Close Preview" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Help">
@@ -64,7 +65,15 @@
                            <children>
                               <HBox prefHeight="270.0" prefWidth="443.0">
                                  <children>
-                                    <AnchorPane prefHeight="270.0" prefWidth="230.0" HBox.hgrow="ALWAYS" />
+                                    <AnchorPane prefHeight="270.0" prefWidth="230.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <TableView layoutX="-1.0" prefHeight="278.0" prefWidth="234.0">
+                                            <columns>
+                                              <TableColumn prefWidth="115.99993592500687" sortable="false" />
+                                              <TableColumn prefWidth="119.2000732421875" />
+                                            </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                     <AnchorPane prefHeight="270.0" prefWidth="209.0" HBox.hgrow="ALWAYS">
                                        <children>
                                           <Pagination layoutX="-2.0" layoutY="-1.0" pageCount="10" prefHeight="278.0" prefWidth="210.0" />
@@ -82,10 +91,10 @@
                <children>
                   <TableView id="procedureTableID" fx:id="procedureTableID" layoutX="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn id="welctableLbl1" fx:id="welctableLbl1" editable="false" prefWidth="135.2001098394394" text="Procedure" />
-                      <TableColumn id="welctableLbl2" fx:id="welctableLbl2" prefWidth="136.7999267578125" text="Patient Name" />
-                        <TableColumn id="welctableLbl3" fx:id="welctableLbl3" prefWidth="93.60009765625" text="Patient ID" />
-                        <TableColumn id="welctableLbl4" fx:id="welctableLbl4" prefWidth="130.3997802734375" text="Procedure ID" />
+                      <TableColumn id="welctableLbl1" fx:id="welctableLbl1" editable="false" prefWidth="135.2001098394394" sortable="false" text="Procedure" />
+                      <TableColumn id="welctableLbl2" fx:id="welctableLbl2" editable="false" prefWidth="136.7999267578125" sortable="false" text="Patient Name" />
+                        <TableColumn id="welctableLbl3" fx:id="welctableLbl3" editable="false" prefWidth="93.60009765625" sortable="false" text="Patient ID" />
+                        <TableColumn id="welctableLbl4" fx:id="welctableLbl4" editable="false" prefWidth="130.3997802734375" sortable="false" text="Procedure ID" />
                     </columns>
                   </TableView>
                </children>

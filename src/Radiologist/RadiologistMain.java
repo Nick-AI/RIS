@@ -25,6 +25,5 @@ public class RadiologistMain extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
-		RadController r = new RadController();
 	}
 }

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.4434108527131783" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="647.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="-2.0" layoutY="-1.0">
+               <children>
+                  <AnchorPane prefHeight="20.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <MenuBar layoutY="2.0" prefHeight="26.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <menus>
+                            <Menu mnemonicParsing="false" text="File">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Edit">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Help">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="22.0" prefWidth="1026.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="radTopLabel" layoutX="2.0" layoutY="3.0" prefHeight="32.0" prefWidth="1026.0" text="RIS - Radiologist - Report - Patient ID" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="222.0" prefWidth="1026.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <SplitPane dividerPositions="0.45499021526418787" layoutX="2.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                          <items>
+                            <AnchorPane>
+                                 <children>
+                                    <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="226.0" prefWidth="476.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <AnchorPane prefHeight="94.0" prefWidth="462.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <GridPane layoutX="-1.0" layoutY="-2.0" prefHeight="72.0" prefWidth="462.0">
+                                                  <columnConstraints>
+                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="157.199951171875" minWidth="10.0" prefWidth="67.20001220703125" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="177.59998779296876" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.19996643066406" minWidth="10.0" prefWidth="70.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.99998779296874" minWidth="10.0" prefWidth="148.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label prefHeight="37.0" prefWidth="62.0" text="First Name:" GridPane.valignment="TOP">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField fx:id="fNameField" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" GridPane.columnIndex="1" />
+                                                      <Label prefHeight="46.0" prefWidth="150.0" text="Last Name:" GridPane.columnIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField fx:id="lNameField" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" GridPane.columnIndex="3" />
+                                                      <Label prefHeight="35.0" prefWidth="67.0" text="Birthdate:" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField fx:id="dOBField" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Label prefHeight="34.0" prefWidth="70.0" text="Sex:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField fx:id="sexField" editable="false" layoutX="325.0" layoutY="20.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="167.0" prefWidth="462.0">
+                                             <children>
+                                                <GridPane layoutX="-2.0" layoutY="-3.0" prefHeight="155.0" prefWidth="472.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.20001220703125" minWidth="10.0" prefWidth="178.3999755859375" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="294.4000244140625" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints maxHeight="25.60001220703125" minHeight="10.0" prefHeight="22.4" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="41.79999389648437" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="55.99998779296875" minHeight="10.0" prefHeight="34.800012207031244" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="47.600012207031256" minHeight="10.0" prefHeight="45.199987792968756" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label prefHeight="30.0" prefWidth="235.0" text="Vitals:" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="34.0" prefWidth="146.0" text="Pulse:" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label prefHeight="42.0" prefWidth="147.0" text="Blood Pressure:" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label prefHeight="40.0" prefWidth="146.0" text="Preexisting Conditions:" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label prefHeight="46.0" prefWidth="154.0" text="Notes:" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <TextField fx:id="pulseField" editable="false" prefHeight="26.0" prefWidth="121.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                                                      <TextField fx:id="bldPressField" editable="false" prefHeight="26.0" prefWidth="121.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                                                      <TextArea fx:id="preExCondField" editable="false" prefHeight="29.0" prefWidth="236.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                                                      <TextArea fx:id="notesField" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="225.0" prefWidth="562.0" />
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="598.0">
+         <children>
+            <SplitPane dividerPositions="0.6496678389996092" layoutX="-1.0" layoutY="-1.0" prefHeight="354.0" prefWidth="1025.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
