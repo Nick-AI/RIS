@@ -122,12 +122,12 @@ public class MainMenuController
 	
 	public void registration(ActionEvent event) throws Exception
 	{
+		//FrontDesk.FrontDesk.startFD();
 		System.out.println("registration");
-		/*stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-
-		root = FXMLLoader.load(getClass().getResource("/EntranceView/Registration.fxml"));
+		stage = (Stage)	((Button)	event.getSource()).getScene().getWindow();
+		root = FXMLLoader.load(getClass().getResource("/FrontDeskView/FrontDeskHome.fxml"));
 		scene = new Scene(root);
-		stage.setScene(scene);*/
+		stage.setScene(scene);
 	}
 	
 	public void vitals(ActionEvent event) throws Exception
