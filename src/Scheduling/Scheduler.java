@@ -316,18 +316,45 @@ public class Scheduler {
                 tempEvent.setProcID(procId);
 
                 //create new Appointment for ArrayList
-                String date = entries.getString("ProcTime");
-                int year = Integer.parseInt(date.substring(6, 10));
-                int dayIdx = Integer.parseInt(date.substring(3, 5));
-                int monIdx = Integer.parseInt(date.substring(0, 2));
-                int timeslot = Integer.parseInt(date.substring(11));
-                try {
+            String date = entries.getString("ProcTime");
+                //modified code --Ian
+                if (date.length() == 12)
+                {	
+                	int year = Integer.parseInt(date.substring(6, 10));
+                	int dayIdx = Integer.parseInt(date.substring(3, 5));
+                	int monIdx = Integer.parseInt(date.substring(0, 2));
+                	int timeslot = Integer.parseInt(date.substring(11));
+                    try {
+                        tempAppointment = new Appointment(monIdx, dayIdx, year, timeslot);
+                    }
+                    catch(Appointment.InvalidDateException e){
+                        System.out.println(e.getMessage());
+                        System.out.println("The date was:" + monIdx + "/" + dayIdx + "/" + year);
+                    }
+                }
+                else if(date.length() == 11)
+                {
+                	int year = Integer.parseInt(date.substring(5, 9));
+                	int dayIdx = Integer.parseInt(date.substring(2, 4));
+                	int monIdx = Integer.parseInt(date.substring(0, 1));
+                	int timeslot = Integer.parseInt(date.substring(10));
+                    try {
+                        tempAppointment = new Appointment(monIdx, dayIdx, year, timeslot);
+                    }
+                    catch(Appointment.InvalidDateException e){
+                        System.out.println(e.getMessage());
+                        System.out.println("The date was:" + monIdx + "/" + dayIdx + "/" + year);
+                    }
+                }//end modified code --Ian
+       
+                
+                /*try {
                     tempAppointment = new Appointment(monIdx, dayIdx, year, timeslot);
                 }
                 catch(Appointment.InvalidDateException e){
                     System.out.println(e.getMessage());
                     System.out.println("The date was:" + monIdx + "/" + dayIdx + "/" + year);
-                }
+                }*/
 
                 //add Appointment to schedule ArrayList
                 boolean wasAdded = false;
