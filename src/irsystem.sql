@@ -183,9 +183,10 @@ CREATE TABLE `schedule` (
 --
 
 INSERT INTO `schedule` (`procType`, `procTime`, `modality`, `patientID`, `procID`, `orderID`) VALUES
-('blabla shoulder blabla', '04/04/2011-12', 'XRAY', 1, 1, 1),
-('bla bla ankle', '05/05/2020-12', 'MRI', 1000000000, 2, 1),
-('blabla ribs', '10/10/2019', 'MRI', 1000000000, 3, 1);
+('blabla shoulder blabla', '04/04/2011-2', 'XRAY', 1, 1, 1),
+('bla bla ankle', '04/05/2011-3', 'MRI', 1000000000, 2, 2),
+('blabla ribs', '04/06/2011-4', 'MRI', 1000000000, 3, 3),
+('broken something', '05/10/2011-6', 'XRAY', 1, 4, 4);
 
 -- --------------------------------------------------------
 
