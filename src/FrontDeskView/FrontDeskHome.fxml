@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="803.0" prefWidth="1333.0" stylesheets="@../FrontDesk/FrontDesk.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontDesk.FrontDesk">
+   <children>
+      <TabPane layoutY="-1.0" prefHeight="803.0" prefWidth="1333.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="HomeTab" onSelectionChanged="#loadTable" text="Home">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="text-field">
+                     <children>
+                        <Separator layoutX="522.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="776.0" prefWidth="0.0">
+                           <effect>
+                              <DropShadow />
+                           </effect></Separator>
+                        <TableView fx:id="ScheduleViewTable" editable="true" layoutX="528.0" layoutY="66.0" prefHeight="710.0" prefWidth="810.0">
+                          <columns>
+                            <TableColumn fx:id="ProcedureCol" minWidth="0.0" prefWidth="174.0" text="Procedure" />
+                              <TableColumn fx:id="TimeCol" minWidth="4.0" prefWidth="148.0" text="Time" />
+                              <TableColumn fx:id="ModCol" prefWidth="101.0" text="Modality" />
+                              <TableColumn fx:id="PatientCol" minWidth="8.0" prefWidth="147.0" text="Patient ID" />
+                              <TableColumn fx:id="ProcIDCol" minWidth="8.0" prefWidth="98.0" text="Proc ID" />
+                              <TableColumn fx:id="OrderCol" minWidth="8.0" prefWidth="135.0" text="Order ID" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="PatientButton" layoutX="217.0" layoutY="266.0" mnemonicParsing="false" onAction="#patientwindow" text="New Patient" />
+                        <TextArea editable="false" layoutX="-1.0" prefHeight="244.0" prefWidth="518.0" text="Welcome to the home page for the front&#10;desk. You can create a new patient record&#10;by clicking the button.">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="backButton" layoutX="14.0" layoutY="735.0" mnemonicParsing="false" onAction="#returnToMenu" text="Main Menu" />
+                        <TextField editable="false" layoutX="528.0" prefHeight="66.0" prefWidth="804.0" styleClass="text-field" text="Patient Schedule">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="ArchiveTab" onSelectionChanged="#loadFromDB" text="Archive">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea editable="false" layoutX="-1.0" prefHeight="165.0" prefWidth="455.0" text="Welcome to the archives. Here you can search&#10;for a patient in the table to the right. You can&#10;also schedule a patient for a procedure by &#10;selecting a patient from the table first and then&#10;clicking the 'Schedule Patient' button.">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextArea>
+                        <Separator layoutX="444.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="776.0" prefWidth="0.0">
+                           <effect>
+                              <DropShadow />
+                           </effect></Separator>
+                        <TableView fx:id="archiveTable" editable="true" layoutX="448.0" layoutY="61.0" prefHeight="710.0" prefWidth="886.0">
+                          <columns>
+                            <TableColumn fx:id="idcol" prefWidth="73.0" text="ID" />
+                            <TableColumn fx:id="firstNameCol" prefWidth="106.0" text="First Name" />
+                              <TableColumn fx:id="lastNameCol" prefWidth="103.0" text="Last Name" />
+                              <TableColumn fx:id="dobcol" prefWidth="64.0" text="DOB" />
+                              <TableColumn fx:id="phoneCol" prefWidth="99.0" text="Phone" />
+                              <TableColumn fx:id="addrCol" prefWidth="91.0" text="Address 1" />
+                              <TableColumn fx:id="addrCol2" prefWidth="84.0" text="Address 2" />
+                              <TableColumn fx:id="cityCol" minWidth="0.0" prefWidth="78.0" text="City" />
+                              <TableColumn fx:id="stateCol" prefWidth="50.0" text="State" />
+                              <TableColumn fx:id="zipCol" prefWidth="59.0" text="Zip" />
+                              <TableColumn fx:id="refPhysCol" prefWidth="76.0" text="RefPhysID" />
+                          </columns>
+                        </TableView>
+                        <TextField alignment="CENTER" editable="false" layoutX="14.0" layoutY="735.0" text="Last edited by:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="editedByUser" editable="false" layoutX="140.0" layoutY="731.0" prefHeight="30.0" prefWidth="224.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font></TextField>
+                        <TextField fx:id="searchTextField" layoutX="138.0" layoutY="239.0" onKeyTyped="#archiveSearch" prefHeight="25.0" prefWidth="177.0" promptText="Search Here">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="schedulePatientButton" layoutX="158.0" layoutY="340.0" mnemonicParsing="false" onAction="#showScheduler" prefHeight="25.0" prefWidth="137.0" text="Schedule Patient">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <TextField editable="false" layoutX="451.0" prefHeight="60.0" prefWidth="881.0" styleClass="text-field" text="Patient Archive">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <styleClass>
+                        <String fx:value="table-cell" />
+                        <String fx:value="table-row-cell" />
+                        <String fx:value="text-field" />
+                     </styleClass></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontDesk.FrontDesk">
+   <children>
+      <AnchorPane prefHeight="867.0" prefWidth="1217.0">
+         <children>
+            <TextField alignment="CENTER" editable="false" layoutX="-1.0" prefHeight="123.0" prefWidth="1217.0" stylesheets="@../FrontDesk/FrontDesk.css" text="New Patient Record">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="FirstNameField" alignment="CENTER" layoutX="250.0" layoutY="159.0" promptText="Enter First Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="LastNameField" alignment="CENTER" layoutX="250.0" layoutY="243.0" prefWidth="224.0" promptText="Enter Last Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="DOBfield" alignment="CENTER" layoutX="250.0" layoutY="331.0" promptText="Enter Date of Birth">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="GenderField" alignment="CENTER" layoutX="250.0" layoutY="414.0" promptText="Enter Gender">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Button fx:id="ConfirmPatientButton" layoutX="601.0" layoutY="550.0" mnemonicParsing="false" onAction="#FDConnection" text="Done">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <TextField fx:id="NumberField" alignment="CENTER" layoutX="250.0" layoutY="503.0" promptText="Enter Phone Number">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="AddrField1" alignment="CENTER" layoutX="775.0" layoutY="159.0" promptText="Enter Address 1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="AddrField2" alignment="CENTER" layoutX="775.0" layoutY="243.0" promptText="Enter Address 2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="CityField" alignment="CENTER" layoutX="775.0" layoutY="331.0" promptText="Enter City">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="StateField" alignment="CENTER" layoutX="775.0" layoutY="414.0" promptText="Enter State">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="ZIPfield" alignment="CENTER" layoutX="775.0" layoutY="503.0" promptText="Enter Zip Code">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
