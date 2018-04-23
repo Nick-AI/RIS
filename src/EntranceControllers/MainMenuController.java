@@ -152,12 +152,12 @@ public class MainMenuController
 	
 	public void files(ActionEvent event) throws Exception
 	{
-		System.out.println("files");
-		/*stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+		//System.out.println("files");
+		stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
-		root = FXMLLoader.load(getClass().getResource("/EntranceView/Files.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/Radiologist/RadView2.0.fxml"));
 		scene = new Scene(root);
-		stage.setScene(scene);*/
+		stage.setScene(scene);
 	}
 	
 	public void logOut(ActionEvent event) throws Exception
