@@ -46,6 +46,10 @@ public class patientData {
 	{
 		return Id.get();
 	}
+	public String getIdAsString()
+	{
+		return Id.toString();
+	}
 	public void setId(int id)
 	{
 		Id.set(id);
