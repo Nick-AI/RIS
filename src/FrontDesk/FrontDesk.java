@@ -118,6 +118,22 @@ public class FrontDesk {
 	String pfName;
 	String plName;
 	
+	
+	public static void startFD()
+	{
+		try 
+		{
+			Class.forName("com.mysql.jdbc.Driver");  
+			con=(Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/rissystem","root","usafcdr86652");
+			smt=(Statement) con.createStatement(); 
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	
 	//opens patient form in a new window
 	public void patientwindow(ActionEvent event)throws Exception
 	{
@@ -139,18 +155,6 @@ public class FrontDesk {
 	//connect to DB and insert values
 	public void FDConnection(ActionEvent event) throws Exception
 	{
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver");  
-			con=(Connection) DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/RISystem","root","admin123");  
-			smt=(Statement) con.createStatement(); 
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
 		//getting text entered into textfields
 		//if nothing was entered, sets a default value
 		String fname = FirstNameField.getText();
@@ -282,14 +286,6 @@ public class FrontDesk {
 		    });
 		    return row ;
 		});
-		
-	
-		/*ProcedureCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,String>("Proc"));
-		TimeCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,String>("Time"));
-		ModCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,String>("Mod"));
-		PatientCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,Integer>("Patid"));
-		ProcIDCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,Integer>("Procid"));
-		OrderCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,Integer>("Ordid"));*/
 		
 		idcol.setCellValueFactory(new PropertyValueFactory<patientData,Integer>("Id"));
 		refPhysCol.setCellValueFactory(new PropertyValueFactory<patientData,Integer>("refID"));
@@ -444,18 +440,7 @@ public class FrontDesk {
 				e.printStackTrace();
 			}
         });
-                
-        try 
-		{
-			Class.forName("com.mysql.jdbc.Driver");  
-			con=(Connection) DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/RISystem","root","admin123"); //change to whatever your username/password is 
-			smt=(Statement) con.createStatement(); 
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+               
 		
 		//fetches data from patient table
 		try
@@ -484,112 +469,31 @@ public class FrontDesk {
 	//Updates the database to reflect edited values
 	public void updateDB(String column, String newValue, int id) throws SQLException
 	{
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver");  
-			con=(Connection) DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/RISystem","root","admin123"); //change to whatever your username/password is 
-			smt=(Statement) con.createStatement(); 
-		}
-		
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
 		PreparedStatement stmt = con.prepareStatement("UPDATE patient SET "+column+" = ? WHERE patientID = ? ");
 		stmt.setString(1, newValue);
         stmt.setInt(2, id);
         stmt.execute();
-        
-		try {
-			if (smt != null)
-			{
-				smt.close();
-			}
-			if (con != null)
-			{
-				con.close();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 	
 	
 	public void updateDBZip(String column,int newValue,int id)throws SQLException
 	{
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver");  
-			con=(Connection) DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/RISystem","root","admin123"); //change to whatever your username/password is 
-			smt=(Statement) con.createStatement(); 
-		}
-		
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
 		PreparedStatement stmt = con.prepareStatement("UPDATE patient SET "+column+" = ? WHERE patientID = ? ");
 		stmt.setInt(1, newValue);
         stmt.setInt(2, id);
         stmt.execute();
-        
-        try {
-			if (smt != null)
-			{
-				smt.close();
-			}
-			if (con != null)
-			{
-				con.close();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	
 	public void updateDBDate(String column,String newValue,int id)throws SQLException, ParseException
 	{
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver");  
-			con=(Connection) DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/RISystem","root","admin123"); //change to whatever your username/password is 
-			smt=(Statement) con.createStatement(); 
-		}
-		
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
 		date = formatter.parse(newValue);
 		sqlDate = new java.sql.Date(date.getTime());
 		PreparedStatement stmt = con.prepareStatement("UPDATE patient SET "+column+" = ? WHERE patientID = ? ");
 		stmt.setDate(1,sqlDate);
         stmt.setInt(2, id);
         stmt.execute();
-        
-        try {
-			if (smt != null)
-			{
-				smt.close();
-			}
-			if (con != null)
-			{
-				con.close();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	
@@ -629,6 +533,9 @@ public class FrontDesk {
                 	 return true;
                  }
                  if (pat.getState().toLowerCase().indexOf(typedText) != -1){
+                	 return true;
+                 }
+                 if (pat.getIdAsString().toLowerCase().indexOf(typedText) != -1){
                 	 return true;
                  }
                  else
@@ -745,19 +652,6 @@ public class FrontDesk {
 	//schedules patient
 	public void schedulePatient(ActionEvent event) throws SQLException,NumberFormatException,NullPointerException
 	{
-		//System.out.println("schedulepatient "+pID);
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver");  
-			con=(Connection) DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/RISystem","root","admin123"); //change to whatever your username/password is 
-			smt=(Statement) con.createStatement(); 
-		}
-		
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
 
 		try {
 			final String mod = modalityBox.getText();
@@ -791,18 +685,6 @@ public class FrontDesk {
 		PatientCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,Integer>("Patid"));
 		ProcIDCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,Integer>("Procid"));
 		OrderCol.setCellValueFactory(new PropertyValueFactory<combinedPatient,Integer>("Ordid"));
-		
-		 try 
-			{
-				Class.forName("com.mysql.jdbc.Driver");  
-				con=(Connection) DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/RISystem","root","admin123"); //change to whatever your username/password is 
-				smt=(Statement) con.createStatement(); 
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
 			
 			//fetches data from patient table
 			try
@@ -821,6 +703,7 @@ public class FrontDesk {
 			{
 				e.printStackTrace();
 			}
+			
 			ScheduleViewTable.setItems(cp);
 		
 		
