@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Radiologist.ReportController">
+   <children>
+      <AnchorPane prefHeight="410.0" prefWidth="1864.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox layoutY="63.0" prefHeight="405.0" prefWidth="1864.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+               <children>
+                  <AnchorPane prefHeight="372.0" prefWidth="1864.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox layoutY="-3.0" prefHeight="426.0" prefWidth="1300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
+                           <children>
+                              <AnchorPane prefHeight="350.0" prefWidth="823.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox layoutY="-1.0" prefHeight="400.0" prefWidth="811.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+                                       <children>
+                                          <AnchorPane prefHeight="73.0" prefWidth="529.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <GridPane layoutY="10.0" prefHeight="78.0" prefWidth="529.0" AnchorPane.bottomAnchor="-32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                                  <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.0" minWidth="10.0" prefWidth="189.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="215.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="179.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="239.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label layoutX="-2.0" prefHeight="83.0" prefWidth="206.0" text="First Name:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                                         <children>
+                                                            <Label layoutX="-1.0" prefHeight="86.0" prefWidth="206.0" text="Last Name:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <padding>
+                                                                  <Insets left="5.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                         <children>
+                                                            <Label layoutX="-1.0" layoutY="-4.0" prefHeight="94.0" prefWidth="206.0" text="Date Of Birth:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                         <children>
+                                                            <Label layoutX="1.0" layoutY="-4.0" prefHeight="98.0" prefWidth="179.0" text="Sex:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-4.0">
+                                                               <padding>
+                                                                  <Insets left="5.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <TextField fx:id="fNameField" editable="false" prefHeight="77.0" prefWidth="216.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                                                      <TextField fx:id="dOBField" editable="false" prefHeight="77.0" prefWidth="142.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="lNameField" editable="false" prefHeight="77.0" prefWidth="216.0" GridPane.columnIndex="3" />
+                                                      <TextField fx:id="sexField" editable="false" prefHeight="77.0" prefWidth="166.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="321.0" prefWidth="836.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <GridPane layoutX="-2.0" layoutY="58.0" prefHeight="245.0" prefWidth="531.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="333.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="518.0" minWidth="10.0" prefWidth="518.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="135.0" minHeight="10.0" prefHeight="117.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label layoutX="4.0" layoutY="-3.0" prefHeight="86.0" prefWidth="425.0" text="Pulse: " AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="-3.0">
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="0.0" prefWidth="512.0" GridPane.columnIndex="1">
+                                                         <children>
+                                                            <TextField fx:id="pulseField" editable="false" prefHeight="65.0" prefWidth="512.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                         <children>
+                                                            <Label layoutX="4.0" layoutY="-1.0" prefHeight="78.0" prefWidth="425.0" text="Blood Pressure:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="-1.0">
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="0.0" prefWidth="512.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <children>
+                                                            <TextField fx:id="bloodPressureField" editable="false" layoutY="2.0" prefHeight="65.0" prefWidth="518.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                                         <children>
+                                                            <Label layoutX="6.0" prefHeight="80.0" prefWidth="419.0" text="Preexisting Conditions:" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="0.0" prefWidth="518.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <children>
+                                                            <TextArea fx:id="preexCondField" editable="false" layoutY="-3.0" prefHeight="109.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                                         <children>
+                                                            <Label layoutX="6.0" layoutY="-6.0" prefHeight="65.0" prefWidth="419.0" text="Notes:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-6.0">
+                                                               <padding>
+                                                                  <Insets left="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="123.0" prefWidth="498.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                         <children>
+                                                            <TextArea fx:id="noteField" editable="false" prefHeight="123.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="502.0" prefWidth="1066.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TableView fx:id="prevReportsTable" layoutX="8.0" layoutY="-2.0" prefHeight="400.0" prefWidth="1041.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="-2.0">
+                                      <columns>
+                                        <TableColumn fx:id="prevRepModCol" editable="false" prefWidth="174.0" text="Modality" />
+                                        <TableColumn fx:id="prevRepDateCol" editable="false" prefWidth="242.0" text="Date Created" />
+                                          <TableColumn fx:id="prevRepDescField" editable="false" prefWidth="342.0" sortable="false" text="Description" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="589.0" prefWidth="1864.0" VBox.vgrow="NEVER">
+         <children>
+            <VBox layoutY="2.0" prefHeight="578.0" prefWidth="1864.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+               <children>
+                  <AnchorPane prefHeight="574.0" prefWidth="1843.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="578.0" prefWidth="1857.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="332.0" prefWidth="1015.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <GridPane layoutX="20.0" layoutY="3.0" prefHeight="577.0" prefWidth="1230.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="605.0" minWidth="10.0" prefWidth="164.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="931.0" minWidth="10.0" prefWidth="602.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints maxHeight="138.0" minHeight="0.0" prefHeight="73.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="288.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="316.0" minHeight="10.0" prefHeight="181.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label prefHeight="75.0" prefWidth="334.0" text="Image ID:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label layoutX="-1.0" layoutY="-2.0" prefHeight="154.0" prefWidth="334.0" text="Image Description:" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-2.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                             <children>
+                                                <Label layoutX="-2.0" layoutY="-2.0" prefHeight="264.0" prefWidth="334.0" text="Report:" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-2.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                             <children>
+                                                <Button fx:id="apprRepButton" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#approveReport" prefHeight="76.0" prefWidth="327.0" text="Approve Report" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="3.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                             <children>
+                                                <TextField fx:id="imageIDField" editable="false" prefHeight="75.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="162.0" prefWidth="896.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <children>
+                                                <TextArea fx:id="imgDescrField" layoutY="4.0" prefHeight="147.0" prefWidth="896.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <children>
+                                                <TextArea fx:id="reportField" layoutY="-4.0" prefHeight="264.0" prefWidth="896.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <children>
+                                                <HBox layoutY="-5.0" prefHeight="100.0" prefWidth="742.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-5.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="95.0" prefWidth="424.0">
+                                                         <children>
+                                                            <Button fx:id="saveButton" layoutX="52.0" layoutY="5.0" mnemonicParsing="false" onAction="#saveImgChanges" prefHeight="86.0" prefWidth="320.0" text="Save Image Changes" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="5.0" />
+                                                         </children>
+                                                         <padding>
+                                                            <Insets left="20.0" right="20.0" />
+                                                         </padding>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <Button fx:id="loadRepButton" layoutX="88.0" layoutY="3.0" mnemonicParsing="false" onAction="#fillReportPage" prefHeight="90.0" prefWidth="250.0" text="Load Info" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0" />
+                                                         </children>
+                                                         <padding>
+                                                            <Insets left="20.0" right="20.0" />
+                                                         </padding>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                             </children></AnchorPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="578.0" prefWidth="714.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox layoutX="-3.0" layoutY="-3.0" prefHeight="578.0" prefWidth="722.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-3.0">
+                                       <children>
+                                          <AnchorPane prefHeight="498.0" prefWidth="594.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <Pagination fx:id="imgSlider" layoutX="-3.0" layoutY="-1.0" prefHeight="499.0" prefWidth="722.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-1.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="81.0" prefWidth="647.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <CheckBox fx:id="attachImgRadButton" layoutX="77.0" mnemonicParsing="false" onAction="#pageSelected" prefHeight="45.0" prefWidth="356.0" text="Attach Image" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

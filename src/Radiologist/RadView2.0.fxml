@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="903.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Radiologist.RadController">
+   <children>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="1920.0">
+         <children>
+            <VBox prefHeight="66.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MenuBar prefHeight="77.0" prefWidth="1920.0" VBox.vgrow="ALWAYS">
+                     <menus>
+                        <Menu mnemonicParsing="false" text="Patient">
+                           <items>
+                              <MenuItem fx:id="menuFileShowPreview" mnemonicParsing="false" text="Show Preview" />
+                              <MenuItem fx:id="menuFileClosePreview" mnemonicParsing="false" text="Close Preview" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="About" />
+                           </items>
+                        </Menu>
+                     </menus>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </MenuBar>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="838.0" prefWidth="1920.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="836.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="364.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="642.0" prefWidth="641.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="936.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <TextArea fx:id="radWelcBox" editable="true" prefHeight="174.0" prefWidth="943.0" text="Welcome Dr. Bla. &#10;Currently, you have X reports waiting to be created. &#10;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="76.0" prefWidth="568.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="initButton" layoutY="4.0" mnemonicParsing="false" onAction="#initRadController" prefHeight="70.0" prefWidth="936.0" text="Load Reports" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="4.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="547.0" prefWidth="936.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="695.0" prefWidth="935.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <AnchorPane prefHeight="620.0" prefWidth="412.0">
+                                             <children>
+                                                <GridPane layoutX="3.0" layoutY="4.0" prefHeight="619.0" prefWidth="406.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="4.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="168.0" minHeight="0.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="234.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="332.0" minHeight="10.0" prefHeight="218.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="212.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="104.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label alignment="BOTTOM_LEFT" layoutX="3.0" layoutY="-3.0" prefHeight="73.0" prefWidth="400.0" text="Patient Name:" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-3.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                         <children>
+                                                            <Label fx:id="patNameLabel" alignment="TOP_LEFT" layoutX="5.0" layoutY="2.0" prefHeight="59.0" prefWidth="400.0" text="PatientName Here" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="2.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="97.0" prefWidth="406.0" GridPane.rowIndex="2">
+                                                         <children>
+                                                            <Label fx:id="procDescrBox" alignment="BOTTOM_LEFT" layoutX="3.0" layoutY="2.0" prefHeight="86.0" prefWidth="400.0" text="Procedure Description:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="2.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="221.0" prefWidth="406.0" GridPane.rowIndex="3">
+                                                         <children>
+                                                            <TextArea fx:id="procDesrBox" editable="false" layoutX="1.0" prefHeight="225.0" prefWidth="406.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="66.0" prefWidth="406.0" GridPane.rowIndex="4">
+                                                         <children>
+                                                            <Label alignment="BOTTOM_LEFT" layoutX="3.0" layoutY="-2.0" prefHeight="62.0" prefWidth="400.0" text="Images Taken Date:" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-2.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="60.0" prefWidth="406.0" GridPane.rowIndex="5">
+                                                         <children>
+                                                            <Label fx:id="dateTakenLabel" alignment="TOP_LEFT" layoutX="5.0" layoutY="-4.0" prefHeight="64.0" prefWidth="402.0" text="Some Date Here" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-4.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+                                                         <children>
+                                                            <Button fx:id="startReportButton" layoutY="10.0" mnemonicParsing="false" onAction="#startReport" onMouseClicked="#startReport" prefHeight="65.0" prefWidth="406.0" text="Start Report" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="695.0" prefWidth="516.0">
+                                             <children>
+                                                <Pagination fx:id="radImgPrev" layoutX="-4.0" layoutY="-3.0" prefHeight="695.0" prefWidth="614.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="-3.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="412.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TableView id="procedureTableID" fx:id="procedureTable" layoutX="1.0" onMouseClicked="#seePatientPreview" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                           <columns>
+                              <TableColumn id="welctableLbl1" fx:id="welcTableProcCol" editable="false" minWidth="-Infinity" prefWidth="237.0" sortable="false" text="Procedure" />
+                              <TableColumn id="welctableLbl2" fx:id="welcTablePatNameCol" editable="false" prefWidth="269.0" sortable="false" text="Patient Name" />
+                              <TableColumn id="welctableLbl3" fx:id="welcTablePatIDCol" editable="false" minWidth="0.0" prefWidth="226.0" sortable="false" text="Patient ID" />
+                              <TableColumn id="welctableLbl4" fx:id="welcTableProcIDCol" editable="false" prefWidth="250.0" sortable="false" text="Procedure ID" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
