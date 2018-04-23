@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Technician.TechController">
+   <children>
+      <AnchorPane HBox.hgrow="ALWAYS">
+         <children>
+            <VBox layoutX="-2.0" prefHeight="1299.0" prefWidth="644.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label layoutY="2.0" prefHeight="71.0" prefWidth="644.0" text="Current Image:" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="249.0" prefWidth="644.0">
+                     <children>
+                        <ImageView fx:id="imgViewer" fitHeight="535.0" fitWidth="637.0" layoutX="3.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-3.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="473.0" prefWidth="644.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <GridPane layoutX="-1.0" layoutY="1.0" prefHeight="180.0" prefWidth="644.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="216.0" minHeight="0.0" prefHeight="74.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="441.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="505.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" prefHeight="89.0" prefWidth="306.0" text="PatientID:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="14.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label fx:id="patIDLabel" layoutX="14.0" layoutY="14.0" prefHeight="89.0" prefWidth="306.0" text="Label" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="14.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" prefHeight="297.0" prefWidth="306.0" text="Procedure Information:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="14.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label fx:id="procDescrLabel" layoutX="14.0" layoutY="14.0" prefHeight="297.0" prefWidth="306.0" text="Label" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="14.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                 <children>
+                                    <Button fx:id="attachButton" layoutX="96.0" layoutY="11.0" mnemonicParsing="false" text="Attach" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="11.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <Button fx:id="apprBut" layoutX="68.0" layoutY="11.0" mnemonicParsing="false" onAction="#submitImages" prefHeight="65.0" prefWidth="176.0" text="Complete" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="11.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane HBox.hgrow="ALWAYS">
+         <children>
+            <TableView layoutY="73.0" prefHeight="834.0" prefWidth="651.0" AnchorPane.bottomAnchor="373.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="73.0">
+              <columns>
+                <TableColumn fx:id="pIDCol" prefWidth="178.0" text="PatientID" />
+                  <TableColumn fx:id="modCol" prefWidth="188.0" text="Modality" />
+                <TableColumn fx:id="descCol" minWidth="0.0" prefWidth="284.0" text="Description" />
+              </columns>
+            </TableView>
+            <Label layoutY="-2.0" prefHeight="73.0" prefWidth="657.0" text="Worklist:" AnchorPane.bottomAnchor="1229.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
