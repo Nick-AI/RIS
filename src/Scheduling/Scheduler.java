@@ -275,9 +275,13 @@ public class Scheduler {
     public HashMap<Appointment, Event> getPatientEvents(int patientID){
         HashMap<Appointment, Event> patientAppointments = new HashMap();
         for (TimeSlot temp: this.schedule){
-            for(Event slotEvent : temp.getEvents()){
-                if(slotEvent.getPatientID() == patientID)
-                    patientAppointments.put(temp.getTime(), slotEvent);
+            if(temp != null) {
+                for (Event slotEvent : temp.getEvents()) {
+                    if(slotEvent != null) {
+                        if (slotEvent.getPatientID() == patientID)
+                            patientAppointments.put(temp.getTime(), slotEvent);
+                    }
+                }
             }
         }
         return patientAppointments;
@@ -316,7 +320,7 @@ public class Scheduler {
                 tempEvent.setProcID(procId);
 
                 //create new Appointment for ArrayList
-            String date = entries.getString("ProcTime");
+                String date = entries.getString("procTime");
                 //modified code --Ian
                 if (date.length() == 12)
                 {	
@@ -359,10 +363,12 @@ public class Scheduler {
                 //add Appointment to schedule ArrayList
                 boolean wasAdded = false;
                 for(TimeSlot item : schedule){
-                    if(item.getTime().equals(tempAppointment)) {
-                        if(item.addEvent(tempEvent)){
-                            wasAdded = true;
-                            break;
+                    if(item != null) {
+                        if (item.getTime().equals(tempAppointment)) {
+                            if (item.addEvent(tempEvent)) {
+                                wasAdded = true;
+                                break;
+                            }
                         }
                     }
                 }
