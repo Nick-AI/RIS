@@ -79,7 +79,7 @@ public class referringPhysician {
 			
 					try {
 						Class.forName("com.mysql.jdbc.Driver");  
-						con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/rissystem","root","usafcdr86652");  
+						con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/risystem","root","ResidenceLife1873!");  
 						stmt=con.createStatement();  
 					referringPhysician window = new referringPhysician();
 					
@@ -255,7 +255,12 @@ public class referringPhysician {
 				System.out.println(b.toString());
 				System.out.println(c.toString());
 				lblError1.setVisible(false);
-				writeFile(a.toString(),b.toString(),c.toString());
+				try {
+					writeFile(a.toString(),b.toString(),c.toString());
+				} catch (InvalidFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				//create report using the selected information
 				 

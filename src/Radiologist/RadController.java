@@ -67,7 +67,7 @@ public class RadController {
     @FXML private TableColumn welcTableProcIDCol;
 
     private Scheduler sched = new Scheduler(createConnection());
-    private int radID = 2000000000; //CHANGE HERE
+    private int radID = 987; //CHANGE HERE
     private String radFName = "Bob", radLName = "Rad", sql;
     private RadViewInfo repPatient;
     private ObservableList<RadViewInfo> radEvents = FXCollections.observableArrayList();
@@ -82,9 +82,9 @@ public class RadController {
         catch(Exception e){
             System.out.println("Problem establishing connection");
         }
-        this.radID = LogInController.getStaffID(); //CHANGE HERE
-        this.radFName = LogInController.getFName();
-        this.radLName = LogInController.getLName();
+//        this.radID = LogInController.getStaffID(); //CHANGE HERE
+//        this.radFName = LogInController.getFName();
+//        this.radLName = LogInController.getLName();
 	    RadViewInfo temp;
         ResultSet rs, tempRs;
         String t_procedure = "", t_patientfName = "", t_patientlName = "", t_procDescr = "", t_dob = "", t_sex = "";
@@ -207,7 +207,6 @@ public class RadController {
                 " reports waiting to be created.");
 
     }
-
     public void startReport(ActionEvent e){
         this.repPatient = procedureTable.getSelectionModel().getSelectedItem();
         Stage stage = new Stage();
@@ -235,7 +234,7 @@ public class RadController {
     private static java.sql.Connection createConnection() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/irSystem","root", "");
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/RISystem","root", "ResidenceLife1873!");
             //CHANGME Variable changes depending on your assigned password for MySQLWorkBench
         }
         catch (Exception e){
@@ -243,7 +242,6 @@ public class RadController {
         }
         return con;
     }
-
     public class RadViewInfo{
 	    private final StringProperty procedure;
 	    private final StringProperty patientfName;

@@ -24,7 +24,7 @@ public class openSQL
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");  
-			con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/rissystem","root","usafcdr86652");  
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/risystem","root","ResidenceLife1873!");  
 			//CHANGME Variable changes depending on your assigned password for MySQLWorkBench
 			//System.out.println("test");
 		}

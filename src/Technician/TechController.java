@@ -175,7 +175,7 @@ public class TechController {
     private static java.sql.Connection createConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/irSystem", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/RISystem", "root", "ResidenceLife1873!");
             //CHANGME Variable changes depending on your assigned password for MySQLWorkBench
         } catch (Exception e) {
             e.printStackTrace();

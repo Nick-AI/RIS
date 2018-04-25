@@ -33,7 +33,7 @@ import java.awt.Component;
 import javax.swing.Box;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
+//import org.eclipse.wb.swing.FocusTraversalOnArray;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
@@ -75,7 +75,7 @@ public class billing extends JFrame {
 			//public void run() {
 				try {
 					Class.forName("com.mysql.jdbc.Driver");  
-					con=(Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/rissystem","root","usafcdr86652"); 
+					con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/risystem","root","ResidenceLife1873!"); 
 					stmt=(Statement) con.createStatement();  
 					billing frame = new billing();
 					frame.setVisible(true);
@@ -416,7 +416,7 @@ public class billing extends JFrame {
 		JLabel lblMmddyyyy = new JLabel("YYYY-MM-DD");
 		lblMmddyyyy.setBounds(156, 124, 122, 14);
 		contentPane.add(lblMmddyyyy);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtID, txtDOB, btnNext1, txtTotal, rdG, txtOther, btnNewButton, btnSubmit, btnExit}));
+		//setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtID, txtDOB, btnNext1, txtTotal, rdG, txtOther, btnNewButton, btnSubmit, btnExit}));
 		
 		btnNext1.addActionListener(new ActionListener() {
 			@Override
